@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Absensi extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
+    public $table = "absensi";
 
     /**
      * The attributes that are mass assignable.

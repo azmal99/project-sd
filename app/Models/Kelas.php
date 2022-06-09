@@ -11,7 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Kelas extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
-
+    public $table = "kelas";
+    
     /**
      * The attributes that are mass assignable.
      *

@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class AnggotaEkstrakulikuler extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
+    public $table = "anggota_ekstrakulikuler";
 
     /**
      * The attributes that are mass assignable.

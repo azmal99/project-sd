@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Rapot extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
+    public $table = "rapot";
 
     /**
      * The attributes that are mass assignable.

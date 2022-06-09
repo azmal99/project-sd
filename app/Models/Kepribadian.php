@@ -11,7 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Kepribadian extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
-
+    public $table = "kepribadian";
+    
     /**
      * The attributes that are mass assignable.
      *

@@ -11,7 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Ekskul extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
-
+    public $table = "ekskul";
+    
     /**
      * The attributes that are mass assignable.
      *

@@ -11,7 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class NilaiKeterampilan extends Authenticatable
 {
     // use HasApiTokens, HasFactory, Notifiable;
-
+    public $table = "nilai_keterampilan";
+    
     /**
      * The attributes that are mass assignable.
      *
