@@ -48,23 +48,37 @@ class GuruController extends BaseController
     //CREATE
     public function store(Request $request)
     {
-        $guru = new Guru();
-        $randomId = rand(1,99);
-        $guru->id = $randomId;
-        $guru->kd_guru = ($request->input('kd_guru'));
-        $guru->nama_guru = ($request->input('nama_guru'));
-        $guru->enable_flag = ($request->input('enable_flag'));
+        try{
+            $guru = new Guru();
+            $randomId = rand(1,99);
+            $guru->id = $randomId;
+            $guru->kd_guru = ($request->input('kd_guru'));
+            $guru->nama_guru = ($request->input('nama_guru'));
+            $guru->enable_flag = ($request->input('enable_flag'));
+            
+            $guru->save();
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Tambah Guru',
+                'data' =>[
+                    'user' => $guru,
+                    ],
+            ], 201)
+            ->header('Access-Control-Allow-Origin', '*');
+        }catch (Throwable $e){
+            report($e);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal Menambahkan Guru',
+                'data' =>[
+                    'user' => $guru,
+                    ],
+            ], 500)
+            ->header('Access-Control-Allow-Origin', '*');
+        }
         
-        $guru->save();
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Tambah Guru',
-            'data' =>[
-                'user' => $guru,
-                ],
-        ], 201)
-        ->header('Access-Control-Allow-Origin', '*');
     }
 
     // UPDATE
