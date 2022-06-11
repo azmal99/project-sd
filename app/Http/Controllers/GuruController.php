@@ -100,9 +100,9 @@ class GuruController extends BaseController
     }
 
     // HARD DELETE
-    public function hardDelete($id)
+    public function hardDelete($kd_guru)
     {
-        $guru = Guru::where('id', '=',  $id)->first();
+        $guru = Guru::where('kd_guru', '=',  $kd_guru)->first();
         $guru->delete();
 
         return response()->json([
@@ -118,6 +118,7 @@ class GuruController extends BaseController
     // DELETE ALL
     public function deleteAll()
     {
+        $guru = Guru::all();
         $guru->delete();
 
         return response()->json([
