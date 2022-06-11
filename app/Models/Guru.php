@@ -19,6 +19,7 @@ class Guru extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kd_guru',
         'nama_guru',
         'enable_flag'
@@ -30,7 +31,7 @@ class Guru extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'id'
+        // 'id'
     ];
 
     /**
