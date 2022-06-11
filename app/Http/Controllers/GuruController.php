@@ -103,7 +103,7 @@ class GuruController extends BaseController
     public function hardDelete($kd_guru)
     {
         $guru = Guru::where('kd_guru', '=',  $kd_guru)->first();
-        $guru->delete();
+        $guru->each->delete();
 
         return response()->json([
             'success' => true,
