@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru; //File Model
+use App\Exceptions\Handler; //Error Handle
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Illuminate\Http\Request;
