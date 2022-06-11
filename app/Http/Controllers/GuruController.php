@@ -100,30 +100,14 @@ class GuruController extends BaseController
     }
 
     // HARD DELETE
-    public function hardDelete($kd_guru)
+    public function hardDelete($id)
     {
-        $guru = Guru::where('kd_guru', '=',  $kd_guru)->first();
+        $guru = Guru::where('id', '=',  $id)->first();
         $guru->each->delete();
 
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Hard Delete Guru',
-            'data' => [
-                'user' => $guru,
-            ],
-        ],201)
-        ->header('Access-Control-Allow-Origin', '*');
-    }
-
-    // DELETE ALL
-    public function deleteAll()
-    {
-        $guru = Guru::all();
-        $guru->delete();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Delete All Guru',
             'data' => [
                 'user' => $guru,
             ],
