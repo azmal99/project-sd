@@ -27,6 +27,8 @@ Route::get('/guru/show/{id}', [App\Http\Controllers\GuruController::class, 'show
 Route::post('/guru/store', [App\Http\Controllers\GuruController::class, 'store']);
 Route::post('/guru/update/{id}', [App\Http\Controllers\GuruController::class, 'update']);
 Route::post('/guru/delete/{id}', [App\Http\Controllers\GuruController::class, 'delete']);
+Route::post('/guru/hard-delete/{id}', [App\Http\Controllers\GuruController::class, 'hardDelete']);
+Route::post('/guru/delete-all', [App\Http\Controllers\GuruController::class, 'deleteAll']);
 
 //router user
 Route::get('/users/index', [App\Http\Controllers\UsersController::class, 'index']);

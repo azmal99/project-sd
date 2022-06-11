@@ -99,6 +99,37 @@ class GuruController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    // HARD DELETE
+    public function hardDelete($id)
+    {
+        $guru = Guru::where('id', '=',  $id)->first();
+        $guru->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Hard Delete Guru',
+            'data' => [
+                'user' => $guru,
+            ],
+        ],201)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    // DELETE ALL
+    public function deleteAll()
+    {
+        $guru->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Delete All Guru',
+            'data' => [
+                'user' => $guru,
+            ],
+        ],201)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     public function receiveInformation(Request $request) {
         if(Response::ajax()) return "OK";
     }
