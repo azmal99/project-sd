@@ -56,16 +56,24 @@ class GuruController extends BaseController
         $guru->nama_guru = ($request->input('nama_guru'));
         $guru->enable_flag = ($request->input('enable_flag'));
         
-        $guru->save();
+        $guru_store = $guru->save();
+        if($guru_store){
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Tambah Guru',
+                'data' =>[
+                    'user' => $guru,
+                    ],
+            ], 201)
+            ->header('Access-Control-Allow-Origin', '*');
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal Tambah Guru',
+            ], 500)
+            ->header('Access-Control-Allow-Origin', '*');
+        }
         
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Tambah Guru',
-            'data' =>[
-                'user' => $guru,
-                ],
-        ], 201)
-        ->header('Access-Control-Allow-Origin', '*');
     }
 
     // UPDATE
