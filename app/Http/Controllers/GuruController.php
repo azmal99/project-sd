@@ -57,7 +57,7 @@ class GuruController extends BaseController
         $guru->enable_flag = ($request->input('enable_flag'));
         
         $guru_store = $guru->save();
-        if($guru_store){
+        if($guru_store = true){
             return response()->json([
                 'success' => true,
                 'message' => 'Berhasil Tambah Guru',
