@@ -74,8 +74,9 @@ class AuthController extends BaseController
             if ($password = $users->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                $users->api_token = $apiToken;
-                $users->save();
+                $users->update([
+                    'api_token' => $apiToken
+                ]);
 
                 return response()->json([
                     'success' => true,
