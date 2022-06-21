@@ -110,7 +110,7 @@ class AuthController extends BaseController
      
         if ($users) {
             $users-> api_token = null;
-            $users->save();
+            $users->update();
         }
 
         return response()->json(['data' => 'User logged out.'], 200)
