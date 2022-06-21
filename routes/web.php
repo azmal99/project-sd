@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 //router auth
-Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginNew']);
 Route::get('/logout/{api_token}', [App\Http\Controllers\AuthController::class, 'logout']);
 
 //router guru
