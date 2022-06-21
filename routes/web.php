@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 //router auth
-Route::post('/login', [App\Http\Controllers\AuthController::class, 'loginNew']);
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginNew']);
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 
 //router guru
