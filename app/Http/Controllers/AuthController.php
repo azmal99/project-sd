@@ -69,20 +69,19 @@ class AuthController extends BaseController
     {        
         $username = $request->input("username");
         $password = $request->input("password");
-        if ($users = Guru::where("username", $username)->first()){
+        if ($guru = Guru::where("username", $username)->first()){
             // if (Hash::check($password, $users->password)) {
-            if ($password = $users->password) {
+            if ($password == $guru->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                $users->update([
-                    'api_token' => $apiToken
-                ]);
+                $guru->api_token = $apiToken;
+                $guru->save();
 
                 return response()->json([
                     'success' => true,
                     'message' => 'Login Success!',
                     'data' => [
-                        'user' => $users,
+                        'user' => $guru,
                         'api_token' => $apiToken
                     ],
                 ],200)
@@ -107,7 +106,7 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        $users = Users::where('api_token')->first();
+        $users = Guru::where('api_token')->first();
      
         if ($users) {
             $users-> api_token = null;
