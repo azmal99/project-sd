@@ -106,11 +106,11 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        $apiToken = $request->input("api_token");
+        $users = Guru::where('api_token')->first();
      
-        if ($guru = Guru::where("api_token", $apiToken)->first()) {
-            $guru->api_token = null;
-            $guru->update();
+        if ($users) {
+            $users-> api_token = null;
+            $users->save();
         }
 
         return response()->json(['data' => 'User logged out.'], 200)
