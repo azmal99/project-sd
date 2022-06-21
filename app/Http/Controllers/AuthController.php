@@ -14,6 +14,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use Illuminate\Support\Collection\update;
 
 
 class AuthController extends BaseController
