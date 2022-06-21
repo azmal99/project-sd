@@ -106,14 +106,17 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        $users = Guru::where('api_token')->first();
-     
-        if ($users) {
-            $users-> api_token = null;
-            $users->save();
+        $apiToken = $request->input("api_token");
+        $guru = Guru::where("api_token", $apiToken)->first();
+
+        if ($guru) {
+            $guru-> api_token = null;
+            $guru->save();
+
+            return response()->json(['data' => 'User logged out.'], 200)
+                         ->header('Access-Control-Allow-Origin',  '*');
         }
 
-        return response()->json(['data' => 'User logged out.'], 200)
-                         ->header('Access-Control-Allow-Origin',  '*');
+        
     }
 }
