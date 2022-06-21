@@ -75,7 +75,7 @@ class AuthController extends BaseController
                 $apiToken = base64_encode(Str::random(32));
 
                 $guru = DB::table('guru')
-                        ->where('users.username', '=', $username)
+                        ->where('username', $username)
                         ->get();
                 
                 $guru->api_token = $apiToken;
