@@ -47,7 +47,21 @@ class AuthController extends BaseController
                     ],
                 ],201)
                 ->header('Access-Control-Allow-Origin', '*');
+            }else {
+                return response()->json([
+                        'success' => false,
+                        'message' => 'Check Your Password!',
+                        'data' => ['']
+                    ],201)
+                ->header('Access-Control-Allow-Origin', '*');
             }
+        }else{
+            return response()->json([
+                    'success' => false,
+                    'message' => 'Check Your Email or Password!',
+                    'data' => ['']
+                ],201)
+            ->header('Access-Control-Allow-Origin', '*');
         }
     }
 
@@ -55,31 +69,44 @@ class AuthController extends BaseController
     {        
         $username = $request->input("username");
         $password = $request->input("password");
-        if ($guru = Guru::where("username", $username)->first()){
+        if ($users = Guru::where("username", $username)->first()){
             // if (Hash::check($password, $users->password)) {
-            if ($password = $guru->password) {
+            if ($password = $users->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                $guru->api_token = $apiToken;
-                $guru->save();
+                $users->api_token = $apiToken;
+                $users->save();
 
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login Success!',
+                    'data' => [
+                        'user' => $users,
+                        'api_token' => $apiToken
+                    ],
+                ],200)
+                ->header('Access-Control-Allow-Origin', '*');
+            }else {
+                return response()->json([
+                        'success' => false,
+                        'message' => 'Check Your Password!',
+                        'data' => ['']
+                    ],401)
+                ->header('Access-Control-Allow-Origin', '*');
             }
+        }else{
+            return response()->json([
+                    'success' => false,
+                    'message' => 'Check Your Email or Password!',
+                    'data' => ['']
+                ],401)
+            ->header('Access-Control-Allow-Origin', '*');
         }
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Login Success!',
-            'data' => [
-                'user' => $guru,
-                'api_token' => $apiToken
-            ],
-        ],201)
-        ->header('Access-Control-Allow-Origin', '*');
     }
 
     public function logout(Request $request)
     {
-        $users = Guru::where('api_token')->first();
+        $users = Users::where('api_token')->first();
      
         if ($users) {
             $users-> api_token = null;
