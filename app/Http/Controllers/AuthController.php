@@ -46,22 +46,6 @@ class AuthController extends BaseController
                     ],
                 ],201)
                 ->header('Access-Control-Allow-Origin', '*');
-            }else {
-                return response()->json([
-                        'success' => false,
-                        'message' => 'Check Your Password!',
-                        'data' => ['']
-                    ],201)
-                ->header('Access-Control-Allow-Origin', '*');
-            }
-        }else{
-            return response()->json([
-                    'success' => false,
-                    'message' => 'Check Your Email or Password!',
-                    'data' => ['']
-                ],201)
-            ->header('Access-Control-Allow-Origin', '*');
-        }
     }
 
     public function logout(Request $request)
