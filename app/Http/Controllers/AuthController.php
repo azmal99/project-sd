@@ -63,17 +63,18 @@ class AuthController extends BaseController
                 $guru->api_token = $apiToken;
                 $guru->save();
 
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Login Success!',
-                    'data' => [
-                        'user' => $guru,
-                        'api_token' => $apiToken
-                    ],
-                ],201)
-                ->header('Access-Control-Allow-Origin', '*');
             }
         }
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Login Success!',
+            'data' => [
+                'user' => $guru,
+                'api_token' => $apiToken
+            ],
+        ],201)
+        ->header('Access-Control-Allow-Origin', '*');
     }
 
     public function logout(Request $request)
