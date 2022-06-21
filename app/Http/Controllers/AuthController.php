@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users; //File Model
+use App\Models\Guru; //File Model
 use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -46,11 +47,38 @@ class AuthController extends BaseController
                     ],
                 ],201)
                 ->header('Access-Control-Allow-Origin', '*');
+            }
+        }
+    }
+
+    public function loginNew(Request $request)
+    {        
+        $username = $request->input("username");
+        $password = $request->input("password");
+        if ($guru = Guru::where("username", $username)->first()){
+            // if (Hash::check($password, $users->password)) {
+            if ($password = $guru->password) {
+                $apiToken = base64_encode(Str::random(32));
+
+                $guru->api_token = $apiToken;
+                $guru->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login Success!',
+                    'data' => [
+                        'user' => $guru,
+                        'api_token' => $apiToken
+                    ],
+                ],201)
+                ->header('Access-Control-Allow-Origin', '*');
+            }
+        }
     }
 
     public function logout(Request $request)
     {
-        $users = Users::where('api_token')->first();
+        $users = Guru::where('api_token')->first();
      
         if ($users) {
             $users-> api_token = null;

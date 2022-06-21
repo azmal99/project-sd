@@ -22,7 +22,11 @@ class Guru extends Authenticatable
         'id',
         'kd_guru',
         'nama_guru',
-        'enable_flag'
+        'username',
+        'password',
+        'lvl_akses',
+        'enable_flag',
+        'api_token'
     ];
 
     /**

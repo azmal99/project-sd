@@ -54,6 +54,9 @@ class GuruController extends BaseController
         $guru->id = $randomId;
         $guru->kd_guru = ($request->input('kd_guru'));
         $guru->nama_guru = ($request->input('nama_guru'));
+        $guru->username = ($request->input('username'));
+        $guru->password = ($request->input('password'));
+        $guru->lvl_akses = ($request->input('lvl_akses'));
         $guru->enable_flag = ($request->input('enable_flag'));
         
         $guru_store = $guru->save();
