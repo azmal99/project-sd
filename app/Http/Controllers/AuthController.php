@@ -75,7 +75,7 @@ class AuthController extends BaseController
                 $apiToken = base64_encode(Str::random(32));
 
                 $guru->api_token = $apiToken;
-                $guru->save();
+                $guru->update();
 
                 return response()->json([
                     'success' => true,
