@@ -78,8 +78,9 @@ class AuthController extends BaseController
                         ->where('username', $username)
                         ->get();
                 
-                $guru->api_token = $apiToken;
-                $guru->save();
+                $guru->update([
+                    'api_token' => $apiToken
+                ]);
 
                 return response()->json([
                     'success' => true,
