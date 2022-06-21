@@ -30,14 +30,8 @@ class AuthController extends BaseController
             if ($password = $users->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                $users->api_token = $apiToken;
-                $users->save();
-
-                $users = DB::table('users')
-                        ->select('users.id', 'gurus.kd_guru', 'gurus.nama_guru', 'users.username', 'users.lvl_akses', 'users.enable_flag', 'users.api_token')
-                        ->where('users.username', '=', $username)
-                        ->join('gurus', 'users.guru_id', '=', 'gurus.id')
-                        ->get();
+                // $users->api_token = $apiToken;
+                // $users->save();
 
                 return response()->json([
                     'success' => true,
