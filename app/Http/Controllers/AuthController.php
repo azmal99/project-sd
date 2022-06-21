@@ -14,7 +14,6 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Contracts\Auth\Factory as Auth;
-use Illuminate\Support\Collection\update;
 
 
 class AuthController extends BaseController
@@ -30,8 +29,14 @@ class AuthController extends BaseController
             if ($password = $users->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                // $users->api_token = $apiToken;
-                // $users->save();
+                $users->api_token = $apiToken;
+                $users->save();
+
+                $users = DB::table('users')
+                        ->select('users.id', 'gurus.kd_guru', 'gurus.nama_guru', 'users.username', 'users.lvl_akses', 'users.enable_flag', 'users.api_token')
+                        ->where('users.username', '=', $username)
+                        ->join('gurus', 'users.guru_id', '=', 'gurus.id')
+                        ->get();
 
                 return response()->json([
                     'success' => true,
@@ -69,13 +74,8 @@ class AuthController extends BaseController
             if ($password == $guru->password) {
                 $apiToken = base64_encode(Str::random(32));
 
-                $guru = DB::table('guru')
-                        ->where('username', $username)
-                        ->get();
-                
-                $guru->update([
-                    'api_token' => $apiToken
-                ]);
+                $guru->api_token = $apiToken;
+                $guri->save();
 
                 return response()->json([
                     'success' => true,
