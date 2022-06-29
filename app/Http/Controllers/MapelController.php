@@ -55,7 +55,7 @@ class MapelController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function showByGuruKdGuru($kd_guru)
+    public function showByKdGuru($kd_guru)
     {
         $mata_pelajaran = MataPelajaran::where('kd_guru', $kd_guru)->first();
         return response()->json([
