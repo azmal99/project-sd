@@ -55,12 +55,12 @@ class MapelController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function showByKdGuru($kd_guru)
+    public function showByGuruId($guru_id)
     {
-        $mata_pelajaran = MataPelajaran::where('kd_guru', $kd_guru)->first();
+        $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil Show Mata Pelajaran By Kode Guru',
+            'message' => 'Berhasil Show Mata Pelajaran By Id Guru',
             'data' => [
                 'user' => $mata_pelajaran,
             ],
