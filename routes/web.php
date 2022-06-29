@@ -53,6 +53,8 @@ Route::post('/kelas/delete/{id}', [App\Http\Controllers\KelasController::class, 
 //router mata pelajaran
 Route::get('/mata-pelajaran/index', [App\Http\Controllers\MapelController::class, 'index']);
 Route::get('/mata-pelajaran/show/{id}', [App\Http\Controllers\MapelController::class, 'show']);
+Route::get('/mata-pelajaran/showByMapel/{kd_mata_pelajaran}', [App\Http\Controllers\MapelController::class, 'showByKdMapel']);
+Route::get('/mata-pelajaran/showByGuru/{kd_guru}', [App\Http\Controllers\MapelController::class, 'showByKdGuru']);
 Route::post('/mata-pelajaran/store', [App\Http\Controllers\MapelController::class, 'store']);
 Route::post('/mata-pelajaran/update/{id}', [App\Http\Controllers\MapelController::class, 'update']);
 Route::post('/mata-pelajaran/delete/{id}', [App\Http\Controllers\MapelController::class, 'delete']);
