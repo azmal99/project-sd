@@ -42,6 +42,32 @@ class MapelController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function showByKdMapel($kd_mata_pelajaran)
+    {
+        $mata_pelajaran = MataPelajaran::where('kd_mata_pelajaran', $kd_mata_pelajaran)->first();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Mata Pelajaran By Kode Mapel',
+            'data' => [
+                'user' => $mata_pelajaran,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showByGuruKdGuru($kd_guru)
+    {
+        $mata_pelajaran = MataPelajaran::where('kd_guru', $kd_guru)->first();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Mata Pelajaran By Kode Guru',
+            'data' => [
+                'user' => $mata_pelajaran,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     //CREATE
     public function store(Request $request)
     {
