@@ -19,6 +19,7 @@ class MataPelajaran extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kd_mata_pelajaran',
         'nama_mata_pelajaran',
         'guru_id',

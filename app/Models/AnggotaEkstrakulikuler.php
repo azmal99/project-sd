@@ -19,6 +19,7 @@ class AnggotaEkstrakulikuler extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'anggota_ekskul',
         'nilai_ekskul',
         'ekskul_id',

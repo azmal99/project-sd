@@ -19,6 +19,7 @@ class NilaiKeterampilan extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'siswa_id',
         'kd_nilai_keterampilan',
         'ph1',

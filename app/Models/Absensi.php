@@ -19,6 +19,7 @@ class Absensi extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'siswa_id',
         'sakit',
         'izin',

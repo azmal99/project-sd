@@ -19,6 +19,7 @@ class Pembelajaran extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kelas_id',
         'siswa_id',
         'mata_pelajaran_id',

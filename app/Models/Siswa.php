@@ -19,6 +19,7 @@ class Siswa extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'nis',
         'nama_siswa',
         'nisn',

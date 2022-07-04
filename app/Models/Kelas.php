@@ -19,6 +19,7 @@ class Kelas extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kd_kelas',
         'nama_kelas',
         'guru_id',

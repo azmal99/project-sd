@@ -19,6 +19,7 @@ class Ekskul extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kd_ekskul',
         'nama_ekskul',
         'guru_id',

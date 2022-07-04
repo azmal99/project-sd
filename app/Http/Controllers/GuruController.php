@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Carbon\Carbon;
 
 class GuruController extends BaseController
 {
@@ -59,7 +60,7 @@ class GuruController extends BaseController
         $guru->lvl_akses = ($request->input('lvl_akses'));
         $guru->enable_flag = ($request->input('enable_flag'));
         $guru->jns_kelamin = ($request->input('jns_kelamin'));
-        $guru->tempat_lahir = to_date($request->input('tempat_lahir'));
+        $guru->tempat_lahir = ($request->input('tempat_lahir'));
         $tgl_lahir = ($request->input('tgl_lahir'));
         $guru->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $guru->alamat = ($request->input('alamat'));

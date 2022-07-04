@@ -19,6 +19,7 @@ class TahunAjaran extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'kd_tahun_ajar',
         'tahun_ajar',
         'semester',
