@@ -61,7 +61,7 @@ class GuruController extends BaseController
         $guru->jns_kelamin = ($request->input('jns_kelamin'));
         $guru->tempat_lahir = to_date($request->input('tempat_lahir'));
         $tgl_lahir = ($request->input('tgl_lahir'));
-        $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
+        $guru->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $guru->alamat = ($request->input('alamat'));
         
         $guru_store = $guru->save();
