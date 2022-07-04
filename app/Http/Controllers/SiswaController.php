@@ -54,7 +54,7 @@ class SiswaController extends BaseController
         $siswa->kelas_id = ($request->input('kelas_id'));
         $siswa->jns_kelamin = ($request->input('jns_kelamin'));
         $siswa->tempat_lahir = ($request->input('tempat_lahir'));
-        $siswa->tgl_lahir = ($request->input('tgl_lahir'));
+        $siswa->tgl_lahir = to_date($request->input('tgl_lahir'));
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
         
