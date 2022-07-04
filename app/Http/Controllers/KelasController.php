@@ -53,7 +53,7 @@ class KelasController extends BaseController
         $kelas->guru_id = ($request->input('guru_id'));
         $kelas->enable_flag = ($request->input('enable_flag'));
         
-        $siswa->save();
+        $kelas->save();
 
         return response()->json([
             'success' => true,
