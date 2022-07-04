@@ -34,7 +34,20 @@ class KelasController extends BaseController
         $kelas = Kelas::where('id', $id)->first();
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil Show Siswa',
+            'message' => 'Berhasil Show Kelas',
+            'data' => [
+                'user' => $kelas,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showByGuru($guru_id)
+    {
+        $kelas = Kelas::where('guru_id', $guru_id)->first();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Kelas',
             'data' => [
                 'user' => $kelas,
             ],
