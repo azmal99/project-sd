@@ -26,7 +26,11 @@ class Guru extends Authenticatable
         'password',
         'lvl_akses',
         'enable_flag',
-        'api_token'
+        'api_token',
+        'jns_kelamin',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat'
     ];
 
     /**

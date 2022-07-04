@@ -58,6 +58,10 @@ class GuruController extends BaseController
         $guru->password = ($request->input('password'));
         $guru->lvl_akses = ($request->input('lvl_akses'));
         $guru->enable_flag = ($request->input('enable_flag'));
+        $guru->jns_kelamin = ($request->input('jns_kelamin'));
+        $guru->tempat_lahir = ($request->input('tempat_lahir'));
+        $guru->tgl_lahir = ($request->input('tgl_lahir'));
+        $guru->alamat = ($request->input('alamat'));
         
         $guru_store = $guru->save();
         if($guru_store = true){

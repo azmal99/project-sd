@@ -23,7 +23,11 @@ class Siswa extends Authenticatable
         'nama_siswa',
         'nisn',
         'kelas_id',
-        'enable_flag'
+        'enable_flag',
+        'jns_kelamin',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat'
     ];
 
     /**
