@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Carbon\Carbon;
 
 class SiswaController extends BaseController
 {
@@ -54,7 +55,8 @@ class SiswaController extends BaseController
         $siswa->kelas_id = ($request->input('kelas_id'));
         $siswa->jns_kelamin = ($request->input('jns_kelamin'));
         $siswa->tempat_lahir = ($request->input('tempat_lahir'));
-        $siswa->tgl_lahir = to_date($request->input('tgl_lahir'));
+        $tgl_lahir = ($request->input('tgl_lahir'));
+        $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
         
