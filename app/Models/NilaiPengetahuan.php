@@ -39,7 +39,7 @@ class NilaiPengetahuan extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'id'
+        // 'id'
     ];
 
     /**
