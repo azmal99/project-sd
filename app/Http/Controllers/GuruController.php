@@ -22,7 +22,7 @@ class GuruController extends BaseController
     //List Guru
     public function index()
     {
-        $guru = Guru::all();
+        $guru = Guru::all()->where('enable_flag', 'Y');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Menampilkan Semua Data Guru',
@@ -36,7 +36,7 @@ class GuruController extends BaseController
 
     public function show($id)
     {
-        $guru = Guru::where('id', $id)->first();
+        $guru = Guru::where('id', $id)->first()->where('enable_flag', 'Y');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Guru',
