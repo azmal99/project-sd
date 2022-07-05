@@ -32,7 +32,7 @@ class Kelas extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'id'
+        
     ];
 
     /**
