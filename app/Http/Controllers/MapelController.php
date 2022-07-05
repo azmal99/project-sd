@@ -35,7 +35,7 @@ class MapelController extends BaseController
 
         $mata_pelajaran = DB::table('mata_pelajaran')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
-        ->join('mata_pelajaran','mata_pelajaran.guru_id','=','guru.id')
+        ->join('guru','mata_pelajaran.guru_id','=','guru.id')
         ->get();
 
         return response()->json([
@@ -81,7 +81,7 @@ class MapelController extends BaseController
         $mata_pelajaran = DB::table('mata_pelajaran')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
         ->where('mata_pelajaran.guru_id', $guru_id)
-        ->join('mata_pelajaran','mata_pelajaran.guru_id','=','guru.id')
+        ->join('guru','mata_pelajaran.guru_id','=','guru.id')
         ->get();
 
         return response()->json([
