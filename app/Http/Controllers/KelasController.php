@@ -54,7 +54,9 @@ class KelasController extends BaseController
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kelas',
-            'data' => $kelas,
+            'data' => [
+                'user' => $kelas,
+                ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
     }
@@ -72,7 +74,9 @@ class KelasController extends BaseController
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kelas',
-            'data' => $kelas,
+            'data' => [
+                'user' => $kelas,
+                ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
     }
