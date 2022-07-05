@@ -32,7 +32,7 @@ class SiswaController extends BaseController
 
     public function show($id)
     {
-        $siswa = Siswa::where('id', $id)->first();
+        $siswa = Siswa::where('id', $id)->first()->where('enable_flag', 'Y');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Siswa',

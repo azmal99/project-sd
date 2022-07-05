@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas; //File Model
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -32,6 +33,7 @@ class KelasController extends BaseController
     {
         $kelas = DB::table('kelas')
         ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
+        ->where('enable_flag', 'Y')
         ->join('guru','kelas.guru_id','=','guru.id')
         ->get();
 
@@ -48,7 +50,7 @@ class KelasController extends BaseController
 
     public function show($id)
     {
-        $kelas = Kelas::where('id', $id)->first();
+        $kelas = Kelas::where('id', $id)->first()->where('enable_flag', 'Y');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kelas',
@@ -65,6 +67,7 @@ class KelasController extends BaseController
         $kelas = DB::table('kelas')
         ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
         ->where('kelas.guru_id', $guru_id)
+        ->where('enable_flag', 'Y')
         ->join('guru','kelas.guru_id','=','guru.id')
         ->get();
 

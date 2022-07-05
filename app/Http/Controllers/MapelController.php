@@ -35,6 +35,7 @@ class MapelController extends BaseController
 
         $mata_pelajaran = DB::table('mata_pelajaran')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
+        ->where('enable_flag', 'Y')
         ->join('guru','mata_pelajaran.guru_id','=','guru.id')
         ->get();
 
@@ -51,7 +52,7 @@ class MapelController extends BaseController
 
     public function show($id)
     {
-        $mata_pelajaran = MataPelajaran::where('id', $id)->first();
+        $mata_pelajaran = MataPelajaran::where('id', $id)->first()->where('enable_flag', 'Y');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Mata Pelajaran',
