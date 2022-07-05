@@ -61,7 +61,7 @@ class KelasController extends BaseController
 
     public function showByGuru($guru_id)
     {
-        $kelas = Kelas::where('guru_id', $guru_id)->first();
+        $kelas = Kelas::where('guru_id', $guru_id)->first()->where('enable_flag', 'Y');
         // $kelas = DB::table('kelas')
         // ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
         // ->where('kelas.guru_id', $guru_id)
