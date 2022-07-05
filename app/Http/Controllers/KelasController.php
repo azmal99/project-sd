@@ -28,6 +28,23 @@ class KelasController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function indexKelas()
+    {
+        $kelas = DB::table('kelas')
+        ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
+        ->join('guru','kelas.guru_id','=','guru.id')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Kelas',
+            'data' => [
+                'user' => $kelas,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
 
     public function show($id)
     {
@@ -44,7 +61,13 @@ class KelasController extends BaseController
 
     public function showByGuru($guru_id)
     {
-        $kelas = Kelas::where('guru_id', $guru_id)->first();
+        // $kelas = Kelas::where('guru_id', $guru_id)->first();
+        $kelas = DB::table('kelas')
+        ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
+        ->where('kelas.guru_id', $guru_id)
+        ->join('guru','kelas.guru_id','=','guru.id')
+        ->get();
+
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kelas',
