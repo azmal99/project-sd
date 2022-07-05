@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran; //File Model
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
