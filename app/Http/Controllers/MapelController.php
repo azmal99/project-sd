@@ -57,7 +57,14 @@ class MapelController extends BaseController
 
     public function showByGuruId($guru_id)
     {
-        $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
+        // $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
+
+        $mata_pelajaran = DB::table('mata_pelajaran')
+        ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
+        ->where('guru.id', '<>', $guru_id)
+        ->join('mata_pelajaran','mata_pelajaran.guru_id','=','guru.id')
+        ->get();
+
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Mata Pelajaran By Id Guru',
