@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Ekskul; //File Model
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -18,7 +17,7 @@ class EkskulController extends BaseController
     //List User
     public function index()
     {
-        $ekskul = Ekskul::all()->where('enable_flag', 'Y');
+        $ekskul = Ekskul::all();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Menampilkan Semua Data Ekskul',
@@ -32,7 +31,7 @@ class EkskulController extends BaseController
 
     public function show($id)
     {
-        $ekskul = Ekskul::where('id', $id)->first()->where('enable_flag', 'Y');
+        $ekskul = Ekskul::where('id', $id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Ekskul',

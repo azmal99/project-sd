@@ -50,7 +50,7 @@ class KelasController extends BaseController
 
     public function show($id)
     {
-        $kelas = Kelas::where('id', $id)->first()->where('enable_flag', 'Y');
+        $kelas = Kelas::where('id', $id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kelas',

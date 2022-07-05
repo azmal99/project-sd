@@ -52,7 +52,7 @@ class MapelController extends BaseController
 
     public function show($id)
     {
-        $mata_pelajaran = MataPelajaran::where('id', $id)->first()->where('enable_flag', 'Y');
+        $mata_pelajaran = MataPelajaran::where('id', $id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Mata Pelajaran',
