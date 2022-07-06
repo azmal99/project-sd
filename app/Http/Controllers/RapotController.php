@@ -54,7 +54,7 @@ class RapotController extends BaseController
         $rapot->ekskul_id = ($request->input('ekskul_id'));
         $rapot->kriteria_kelulusan = ($request->input('keriteria_kelulusan'));
         $rapot->enable_flag = ($request->input('enable_flag'));
-        $rapot->tahuan_ajar_id = ($request->input('tahuan_ajar_id'));
+        $rapot->tahun_ajar_id = ($request->input('tahuan_ajar_id'));
         
         $rapot->save();
 
