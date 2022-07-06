@@ -93,7 +93,9 @@ Route::post('/pembelajaran/delete/{id}', [App\Http\Controllers\PembelajaranContr
 
 //router rapot
 Route::get('/rapot/index', [App\Http\Controllers\RapotController::class, 'index']);
+Route::get('/rapot/show-rapot', [App\Http\Controllers\RapotController::class, 'indexAll']);
 Route::get('/rapot/show/{id}', [App\Http\Controllers\RapotController::class, 'show']);
+Route::get('/rapot/show-siswa/{siswa_id}', [App\Http\Controllers\RapotController::class, 'showBySiswa']);
 Route::post('/rapot/store', [App\Http\Controllers\RapotController::class, 'store']);
 Route::post('/rapot/update/{id}', [App\Http\Controllers\RapotController::class, 'update']);
 Route::post('/rapot/delete/{id}', [App\Http\Controllers\RapotController::class, 'delete']);

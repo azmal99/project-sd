@@ -29,12 +29,57 @@ class RapotController extends BaseController
     }
 
 
+    public function indexAll()
+    {
+        $rapot = DB::table('rapot')
+        ->select( 'siswa.nama_siswa' , 'kelas.nama_kelas','mata_pelajaran.kd_mata_pelajaran', 
+                'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
+                'rapot.kriteria_kelulusan', 'rapot.tahun_ajar', 'rapot.enable_flag')
+        ->join('siswa','rapot.guru_id','=','siswa.id')
+        ->join('kelas','rapot.kelas_id','=','kelas.id')
+        ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
+        ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
+        ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Menampilkan Semua Data Rapot',
+            'data' => [
+                'user' => $rapot,
+            ],
+        ], 200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     public function show($id)
     {
         $rapot = Rapot::where('id', $id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Rapot',
+            'data' => [
+                'user' => $rapot,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showBySiswa($siswa_id)
+    {
+        // $rapot = Rapot::where('siswa_id', $siswa_id)->first();
+        $rapot = DB::table('rapot')
+        ->select( 'siswa.nama_siswa' , 'kelas.nama_kelas','mata_pelajaran.kd_mata_pelajaran', 
+                'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
+                'rapot.kriteria_kelulusan', 'rapot.tahun_ajar', 'rapot.enable_flag')
+        ->where('rapot.siswa_id', $siswa_id)
+        ->join('siswa','rapot.guru_id','=','siswa.id')
+        ->join('kelas','rapot.kelas_id','=','kelas.id')
+        ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
+        ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Rapot By Siswa',
             'data' => [
                 'user' => $rapot,
             ],
