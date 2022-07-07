@@ -105,7 +105,7 @@ class SiswaController extends BaseController
         $nilai_keterampilan->ph6 = null;
         $nilai_keterampilan->pts = null;
         $nilai_keterampilan->pas = null;
-        $nilai_keterampilan->tahuan_ajar_id = null;
+        $nilai_keterampilan->tahun_ajar_id = null;
 
         $nilai_keterampilan->save();
 
@@ -122,7 +122,7 @@ class SiswaController extends BaseController
         $nilai_pengetahuan->ph6 = null;
         $nilai_pengetahuan->pts = null;
         $nilai_pengetahuan->pas = null;
-        $nilai_pengetahuan->tahuan_ajar_id = null;
+        $nilai_pengetahuan->tahun_ajar_id = null;
         
         $nilai_pengetahuan->save();
 
@@ -139,7 +139,7 @@ class SiswaController extends BaseController
         $nilai_tugas->ph6 = null;
         $nilai_tugas->pts = null;
         $nilai_tugas->pas = null;
-        $nilai_tugas->tahuan_ajar_id = null;
+        $nilai_tugas->tahun_ajar_id = null;
         
         $nilai_tugas->save();
 
@@ -153,7 +153,7 @@ class SiswaController extends BaseController
         $pembelajaran->kd_nilai_keterampilan = null;
         $pembelajaran->kd_nilai_tugas = null;
         $pembelajaran->jumlah_nilai = null;
-        $pembelajaran->tahuan_ajar_id = null;
+        $pembelajaran->tahun_ajar_id = null;
 
         $pembelajaran->save();
 
