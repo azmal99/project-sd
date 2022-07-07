@@ -75,7 +75,7 @@ class SiswaController extends BaseController
         $absensi->siswa_id = $siswa->id;
         $absensi->sakit = null;
         $absensi->izin = null;
-        $absensi->tanpa_alassan = null;
+        $absensi->tanpa_alasan = null;
         $absensi->tahun_ajar_id = null;
 
         $absensi->save();
