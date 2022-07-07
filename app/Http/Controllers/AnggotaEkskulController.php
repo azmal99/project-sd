@@ -48,7 +48,7 @@ class AnggotaEkskulController extends BaseController
         $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
         $randomId = rand(1,99);
         $anggota_ekstrakulikuler->id = $randomId;
-        $anggota_ekstrakulikuler->anggota_ekskul = ($request->input('anggota_ekskul'));
+        $anggota_ekstrakulikuler->siswa_id = ($request->input('siswa_id'));
         $anggota_ekstrakulikuler->nilai_ekskul = ($request->input('nilai_ekskul'));
         $anggota_ekstrakulikuler->ekskul_id = ($request->input('ekskul_id'));
         $anggota_ekstrakulikuler->enable_flag = ($request->input('enable_flag'));
