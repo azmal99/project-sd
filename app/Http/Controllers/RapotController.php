@@ -40,7 +40,7 @@ class RapotController extends BaseController
         ->join('kelas','siswa.kelas_id','=','kelas.id')
         ->join('absensi','siswa.id','=','absensi.siswa_id')
         ->join('kepribadian','siswa.id','=','kepribadian.siswa_id')
-        ->join('ekskul','siswa.siswa_id','=','siswa.id')
+        ->join('ekskul','siswa.id','=','ekskul.siswa_id')
         ->join('tahun_ajaran','rapot.tahun_ajar_id','=','tahun_ajaran.id')
         ->get();
         return response()->json([
