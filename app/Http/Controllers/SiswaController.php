@@ -67,8 +67,6 @@ class SiswaController extends BaseController
         $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
-        
-        $siswa->save();
 
         $absensi = new Absensi();
         $randomIdAbsensi = rand(1,99);
@@ -79,8 +77,6 @@ class SiswaController extends BaseController
         $absensi->tanpa_alasan = null;
         $absensi->tahun_ajar_id = null;
 
-        $absensi->save();
-
         $kepribadian = new Kepribadian();
         $randomIdKepribadian = rand(1,99);
         $kepribadian->id = $randomIdKepribadian;
@@ -90,8 +86,6 @@ class SiswaController extends BaseController
         $kepribadian->kebersihan = null;
         $kepribadian->kerapihan = null;
         $kepribadian->cttn_walikelas = null;
-
-        $kepribadian->save();
 
         $nilai_keterampilan = new NilaiKeterampilan();
         $randomIdKeterampilan = rand(1,99);
@@ -108,8 +102,6 @@ class SiswaController extends BaseController
         $nilai_keterampilan->pas = null;
         $nilai_keterampilan->tahun_ajar_id = null;
 
-        $nilai_keterampilan->save();
-
         $nilai_pengetahuan = new NilaiPengetahuan();
         $randomIdPengetahuan = rand(1,99);
         $nilai_pengetahuan->id = $randomIdPengetahuan;
@@ -124,8 +116,6 @@ class SiswaController extends BaseController
         $nilai_pengetahuan->pts = null;
         $nilai_pengetahuan->pas = null;
         $nilai_pengetahuan->tahun_ajar_id = null;
-        
-        $nilai_pengetahuan->save();
 
         $nilai_tugas = new NilaiTugas();
         $randomIdTugas = rand(1,99);
@@ -141,8 +131,6 @@ class SiswaController extends BaseController
         $nilai_tugas->pts = null;
         $nilai_tugas->pas = null;
         $nilai_tugas->tahun_ajar_id = null;
-        
-        $nilai_tugas->save();
 
         $pembelajaran = new Pembelajaran();
         $randomIdPembelajaran = rand(1,99);
@@ -156,21 +144,23 @@ class SiswaController extends BaseController
         $pembelajaran->jumlah_nilai = null;
         $pembelajaran->tahun_ajar_id = null;
 
-        $pembelajaran->save();
-
         $rapot = new Rapot();
         $randomIdRapot = rand(1,99);
         $rapot->id = $randomIdRapot;
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
-        $tahunAjar = DB::table('tahun_ajaran')
-                    ->select('id')
-                    ->where('enable_flag', 'Y')
-                    ->get();
+        $tahunAjar = TahunAjaran::where('enable_flag', 'Y');
         $rapot->tahun_ajar_id = $tahunAjar;
         $rapot->predikat = null;
         
+        $siswa->save();
+        $absensi->save();
+        $kepribadian->save();
+        $nilai_keterampilan->save();
+        $nilai_pengetahuan->save();
+        $nilai_tugas->save();
+        $pembelajaran->save();
         $rapot->save();
 
         return response()->json([
