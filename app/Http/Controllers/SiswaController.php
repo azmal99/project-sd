@@ -163,7 +163,11 @@ class SiswaController extends BaseController
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
-        $rapot->tahun_ajar_id = null;
+        $tahunAjar = DB::table('tahun_ajaran')
+                    ->select('id')
+                    ->where('enable_flag', 'Y')
+                    ->get();
+        $rapot->tahun_ajar_id = $tahunAjar;
         $rapot->predikat = null;
         
         $rapot->save();
