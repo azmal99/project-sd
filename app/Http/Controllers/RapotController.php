@@ -36,7 +36,7 @@ class RapotController extends BaseController
         ->select( 'siswa.nama_siswa' , 'kelas.nama_kelas','mata_pelajaran.kd_mata_pelajaran', 
                 'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
                 'rapot.kriteria_kelulusan', 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
-        ->join('siswa','rapot.guru_id','=','siswa.id')
+        ->join('siswa','rapot.siswa_id','=','siswa.id')
         ->join('kelas','rapot.kelas_id','=','kelas.id')
         ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
         ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
@@ -73,7 +73,7 @@ class RapotController extends BaseController
                 'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
                 'rapot.kriteria_kelulusan', 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
         ->where('rapot.siswa_id', $siswa_id)
-        ->join('siswa','rapot.guru_id','=','siswa.id')
+        ->join('siswa','rapot.siswa','=','siswa.id')
         ->join('kelas','rapot.kelas_id','=','kelas.id')
         ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
         ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
