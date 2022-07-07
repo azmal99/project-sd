@@ -11,6 +11,7 @@ use App\Models\NilaiTugas; //File Model
 use App\Models\Pembelajaran; //File Model
 use App\Models\Rapot; //File Model
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
