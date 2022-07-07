@@ -10,7 +10,6 @@ use App\Models\NilaiKeterampilan; //File Model
 use App\Models\NilaiTugas; //File Model
 use App\Models\Pembelajaran; //File Model
 use App\Models\Rapot; //File Model
-use App\Models\TahunAjaran; //File Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -151,11 +150,12 @@ class SiswaController extends BaseController
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
-        $tahunAjar = TahunAjaran::where('enable_flag', 'Y');
-        $rapot->tahun_ajar_id = (int)$tahunAjar;
+        $tahunAjar = DB::table('tahun_ajar')
+                    ->select('id')
+                    ->where('enable_flag', 'Y');
+        $rapot->tahun_ajar_id = $tahunAjar;
         $rapot->predikat = null;
         
-        $siswa->save();
         $absensi->save();
         $kepribadian->save();
         $nilai_keterampilan->save();
