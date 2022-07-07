@@ -72,7 +72,7 @@ class SiswaController extends BaseController
         $absensi = new Absensi();
         $randomIdAbsensi = rand(1,99);
         $absensi->id = $randomIdAbsensi;
-        $absensi->siswa_id = $siswa->id;
+        $absensi->siswa_id = $randomIdSiswa;
         $absensi->sakit = null;
         $absensi->izin = null;
         $absensi->tanpa_alasan = null;
@@ -83,7 +83,7 @@ class SiswaController extends BaseController
         $kepribadian = new Kepribadian();
         $randomIdKepribadian = rand(1,99);
         $kepribadian->id = $randomIdKepribadian;
-        $kepribadian->siswa_id = $siswa->id;
+        $kepribadian->siswa_id = $randomIdSiswa;
         $kepribadian->sikap_spiritual = null;
         $kepribadian->kerajinan = null;
         $kepribadian->kebersihan = null;
@@ -95,7 +95,7 @@ class SiswaController extends BaseController
         $nilai_keterampilan = new NilaiKeterampilan();
         $randomIdKeterampilan = rand(1,99);
         $nilai_keterampilan->id = $randomIdKeterampilan;
-        $nilai_keterampilan->siswa_id = $siswa->id;
+        $nilai_keterampilan->siswa_id = $randomIdSiswa;
         $nilai_keterampilan->kd_nilai_keterampilan = null;
         $nilai_keterampilan->ph1 = null;
         $nilai_keterampilan->ph2 = null;
@@ -112,7 +112,7 @@ class SiswaController extends BaseController
         $nilai_pengetahuan = new NilaiPengetahuan();
         $randomIdPengetahuan = rand(1,99);
         $nilai_pengetahuan->id = $randomIdPengetahuan;
-        $nilai_pengetahuan->siswa_id = $siswa->id;
+        $nilai_pengetahuan->siswa_id = $randomIdSiswa;
         $nilai_pengetahuan->kd_nilai_pengetahuan = null;
         $nilai_pengetahuan->ph1 = null;
         $nilai_pengetahuan->ph2 = null;
@@ -129,7 +129,7 @@ class SiswaController extends BaseController
         $nilai_tugas = new NilaiTugas();
         $randomIdTugas = rand(1,99);
         $nilai_tugas->id = $randomIdTugas;
-        $nilai_tugas->siswa_id = $siswa->id;
+        $nilai_tugas->siswa_id = $randomIdSiswa;
         $nilai_tugas->kd_nilai_tugas = null;
         $nilai_tugas->ph1 = null;
         $nilai_tugas->ph2 = null;
@@ -146,7 +146,7 @@ class SiswaController extends BaseController
         $pembelajaran = new Pembelajaran();
         $randomIdPembelajaran = rand(1,99);
         $pembelajaran->id = $randomIdPembelajaran;
-        $pembelajaran->siswa_id = $siswa->id;
+        $pembelajaran->siswa_id = $randomIdSiswa;
         $pembelajaran->kelas_id = $siswa->kelas_id;
         $pembelajaran->mata_pelajaran_id = null;
         $pembelajaran->kd_nilai_pengetahuan = null;
@@ -160,7 +160,7 @@ class SiswaController extends BaseController
         $rapot = new Rapot();
         $randomIdRapot = rand(1,99);
         $rapot->id = $randomIdRapot;
-        $rapot->siswa_id = $siswa->id;
+        $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
         $rapot->tahun_ajar_id = null;
