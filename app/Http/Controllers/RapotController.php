@@ -33,12 +33,13 @@ class RapotController extends BaseController
     public function indexAll()
     {
         $rapot = DB::table('rapot')
-        ->select( 'siswa.nama_siswa' , 'kelas.nama_kelas','mata_pelajaran.kd_mata_pelajaran', 
-                'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
-                'rapot.kriteria_kelulusan', 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
+        ->select('siswa.nama_siswa', 'kelas.nama_kelas', 'absensi.sakit', 'absensi.izin', 'absensi.tanpa_alasan',
+                 'ekskul.kd_ekskul', 'ekskul.nama_ekskul', 'rapot.kriteria_kelulusan', 
+                 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
         ->join('siswa','rapot.siswa_id','=','siswa.id')
-        ->join('kelas','rapot.kelas_id','=','kelas.id')
-        ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
+        ->join('kelas','siswa.kelas_id','=','kelas.id')
+        ->join('absensi','rapot.absensi_id','=','absensi.id')
+        ->join('kepribadian','kepribadian.kepribadian_id','=','kepribadian.id')
         ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
         ->join('tahun_ajaran','rapot.tahun_ajar_id','=','tahun_ajaran.id')
         ->get();
@@ -69,13 +70,15 @@ class RapotController extends BaseController
     {
         // $rapot = Rapot::where('siswa_id', $siswa_id)->first();
         $rapot = DB::table('rapot')
-        ->select( 'siswa.nama_siswa' , 'kelas.nama_kelas','mata_pelajaran.kd_mata_pelajaran', 
-                'mata_pelajaran.nama_mata_pelajaran', 'ekskul.kd_ekskul', 'ekskul.nama_ekskul',
-                'rapot.kriteria_kelulusan', 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
+        ->select('siswa.nama_siswa', 'kelas.nama_kelas', 'rapot.predikat', 'absensi.sakit', 
+                 'absensi.izin', 'absensi.tanpa_alasan',
+                 'ekskul.kd_ekskul', 'ekskul.nama_ekskul', 'rapot.kriteria_kelulusan', 
+                 'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
         ->where('rapot.siswa_id', $siswa_id)
         ->join('siswa','rapot.siswa_id','=','siswa.id')
-        ->join('kelas','rapot.kelas_id','=','kelas.id')
-        ->join('mata_pelajaran','rapot.mata_pelajaran_id','=','mata_pelajaran.id')
+        ->join('kelas','siswa.kelas_id','=','kelas.id')
+        ->join('absensi','siswa.id','=','absensi.siswa_id')
+        ->join('kepribadian','siswa.id','=','kepribadian.siswa_id')
         ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
         ->join('tahun_ajaran','rapot.tahun_ajar_id','=','tahun_ajaran.id')
         ->get();
@@ -147,8 +150,6 @@ class RapotController extends BaseController
         ],201)
         ->header('Access-Control-Allow-Origin', '*');
     }
-
-
 
     public function receiveInformation(Request $request) {
         if(Response::ajax()) return "OK";

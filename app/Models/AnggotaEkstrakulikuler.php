@@ -20,7 +20,7 @@ class AnggotaEkstrakulikuler extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'anggota_ekskul',
+        'siswa_id',
         'nilai_ekskul',
         'ekskul_id',
         'enable_flag'

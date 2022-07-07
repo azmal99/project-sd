@@ -21,6 +21,7 @@ class Rapot extends Authenticatable
     protected $fillable = [
         'id',
         'siswa_id',
+        'predikat',
         'absensi_id',
         'kepribadian_id',
         'ekskul_id',
