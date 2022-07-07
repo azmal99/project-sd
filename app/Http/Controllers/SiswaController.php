@@ -96,7 +96,7 @@ class SiswaController extends BaseController
         $randomId = rand(1,99);
         $nilai_keterampilan->id = $randomId;
         $nilai_keterampilan->siswa_id = $siswa->id;
-        $nilai_keterampilan->kd_nilai_pengetahuan = null;
+        $nilai_keterampilan->kd_nilai_keterampilan = null;
         $nilai_keterampilan->ph1 = null;
         $nilai_keterampilan->ph2 = null;
         $nilai_keterampilan->ph3 = null;
@@ -130,7 +130,7 @@ class SiswaController extends BaseController
         $randomId = rand(1,99);
         $nilai_tugas->id = $randomId;
         $nilai_tugas->siswa_id = $siswa->id;
-        $nilai_tugas->kd_nilai_pengetahuan = null;
+        $nilai_tugas->kd_nilai_tugas = null;
         $nilai_tugas->ph1 = null;
         $nilai_tugas->ph2 = null;
         $nilai_tugas->ph3 = null;
