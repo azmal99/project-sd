@@ -22,9 +22,6 @@ class Rapot extends Authenticatable
         'id',
         'siswa_id',
         'predikat',
-        'absensi_id',
-        'kepribadian_id',
-        'ekskul_id',
         'kriteria_kelulusan',
         'tahun_ajar_id',
         'enable_flag'

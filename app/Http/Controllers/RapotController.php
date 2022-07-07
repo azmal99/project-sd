@@ -38,9 +38,9 @@ class RapotController extends BaseController
                  'tahun_ajaran.tahun_ajar', 'tahun_ajaran.semester', 'rapot.enable_flag')
         ->join('siswa','rapot.siswa_id','=','siswa.id')
         ->join('kelas','siswa.kelas_id','=','kelas.id')
-        ->join('absensi','rapot.absensi_id','=','absensi.id')
-        ->join('kepribadian','kepribadian.kepribadian_id','=','kepribadian.id')
-        ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
+        ->join('absensi','siswa.id','=','absensi.siswa_id')
+        ->join('kepribadian','siswa.id','=','kepribadian.siswa_id')
+        ->join('ekskul','siswa.siswa_id','=','siswa.id')
         ->join('tahun_ajaran','rapot.tahun_ajar_id','=','tahun_ajaran.id')
         ->get();
         return response()->json([
@@ -79,7 +79,7 @@ class RapotController extends BaseController
         ->join('kelas','siswa.kelas_id','=','kelas.id')
         ->join('absensi','siswa.id','=','absensi.siswa_id')
         ->join('kepribadian','siswa.id','=','kepribadian.siswa_id')
-        ->join('ekskul','rapot.ekskul_id','=','ekskul.id')
+        ->join('ekskul','siswa.siswa_id','=','siswa.id')
         ->join('tahun_ajaran','rapot.tahun_ajar_id','=','tahun_ajaran.id')
         ->get();
 
@@ -100,12 +100,10 @@ class RapotController extends BaseController
         $randomId = rand(1,99);
         $rapot->id = $randomId;
         $rapot->siswa_id = ($request->input('siswa_id'));
-        $rapot->kelas_id = ($request->input('kelas_id'));
-        $rapot->mata_pelajaran_id = ($request->input('mata_pelajaran_id'));
-        $rapot->ekskul_id = ($request->input('ekskul_id'));
         $rapot->kriteria_kelulusan = ($request->input('kriteria_kelulusan'));
         $rapot->enable_flag = ($request->input('enable_flag'));
         $rapot->tahun_ajar_id = ($request->input('tahun_ajar_id'));
+        $rapot->predikat = ($request->input('predikat'));
         
         $rapot->save();
 

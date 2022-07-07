@@ -157,6 +157,17 @@ class SiswaController extends BaseController
 
         $pembelajaran->save();
 
+        $rapot = new Rapot();
+        $randomId = rand(1,99);
+        $rapot->id = $randomId;
+        $rapot->siswa_id = $siswa->id;
+        $rapot->kriteria_kelulusan = null;
+        $rapot->enable_flag = 'Y';
+        $rapot->tahun_ajar_id = null;
+        $rapot->predikat = null;
+        
+        $rapot->save();
+
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Tambah Siswa',
