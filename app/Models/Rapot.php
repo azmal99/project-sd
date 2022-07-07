@@ -20,9 +20,9 @@ class Rapot extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'kelas_id',
         'siswa_id',
-        'mata_pelajaran_id',
+        'absensi_id',
+        'kepribadian_id',
         'ekskul_id',
         'kriteria_kelulusan',
         'tahun_ajar_id',
