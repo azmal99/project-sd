@@ -153,7 +153,7 @@ class SiswaController extends BaseController
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
         $tahunAjar = TahunAjaran::select('id')->where('enable_flag', 'Y');
-        $intTahunAjar = int($tahunAjar);
+        $intTahunAjar = (int)$tahunAjar;
         $rapot->tahun_ajar_id = $intTahunAjar;
         $rapot->predikat = null;
         
