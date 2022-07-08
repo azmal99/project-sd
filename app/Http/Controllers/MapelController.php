@@ -99,8 +99,6 @@ class MapelController extends BaseController
     public function store(Request $request)
     {
         $mata_pelajaran = new MataPelajaran();
-        $randomId = rand(1,9999999);
-        $mata_pelajaran->id = $randomId;
         $mata_pelajaran->kd_mata_pelajaran = ($request->input('kd_mata_pelajaran'));
         $mata_pelajaran->nama_mata_pelajaran = ($request->input('nama_mata_pelajaran'));
         $mata_pelajaran->guru_id = ($request->input('guru_id'));

@@ -46,8 +46,6 @@ class EkskulController extends BaseController
     public function store(Request $request)
     {
         $ekskul = new Ekskul();
-        $randomId = rand(1,9999999);
-        $ekskul->id = $randomId;
         $ekskul->kd_ekskul = ($request->input('kd_ekskul'));
         $ekskul->nama_ekskul = ($request->input('nama_ekskul'));
         $ekskul->guru_id = ($request->input('guru_id'));

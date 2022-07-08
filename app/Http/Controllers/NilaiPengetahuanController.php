@@ -46,8 +46,6 @@ class NilaiPengetahuanController extends BaseController
     public function store(Request $request)
     {
         $nilai_pengetahuan = new NilaiPengetahuan();
-        $randomId = rand(1,9999999);
-        $nilai_pengetahuan->id = $randomId;
         $nilai_pengetahuan->siswa_id = ($request->input('siswa_id'));
         $nilai_pengetahuan->kd_nilai_pengetahuan = ($request->input('kd_nilai_pengetahuan'));
         $nilai_pengetahuan->ph1 = ($request->input('ph1'));

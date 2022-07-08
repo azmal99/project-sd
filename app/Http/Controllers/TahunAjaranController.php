@@ -46,8 +46,6 @@ class TahunAjaranController extends BaseController
     public function store(Request $request)
     {
         $tahun_ajaran = new TahunAjaran();
-        $randomId = rand(1,99);
-        $tahun_ajaran->id = $randomId;
         $tahun_ajaran->kd_tahun_ajar = ($request->input('kd_tahun_ajar'));
         $tahun_ajaran->tahun_ajar = ($request->input('tahun_ajar'));
         $tahun_ajaran->semester = ($request->input('semester'));

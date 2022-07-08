@@ -46,8 +46,6 @@ class AnggotaEkskulController extends BaseController
     public function store(Request $request)
     {
         $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
-        $randomId = rand(1,9999999);
-        $anggota_ekstrakulikuler->id = $randomId;
         $anggota_ekstrakulikuler->siswa_id = ($request->input('siswa_id'));
         $anggota_ekstrakulikuler->nilai_ekskul = ($request->input('nilai_ekskul'));
         $anggota_ekstrakulikuler->ekskul_id = ($request->input('ekskul_id'));

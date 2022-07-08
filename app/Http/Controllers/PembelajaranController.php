@@ -46,8 +46,6 @@ class PembelajaranController extends BaseController
     public function store(Request $request)
     {
         $pembelajaran = new Pembelajaran();
-        $randomId = rand(1,9999999);
-        $pembelajaran->id = $randomId;
         $pembelajaran->siswa_id = ($request->input('siswa_id'));
         $pembelajaran->kelas_id = ($request->input('kelas_id'));
         $pembelajaran->mata_pelajaran_id = ($request->input('mata_pelajaran_id'));

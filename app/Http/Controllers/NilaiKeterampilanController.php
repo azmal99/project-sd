@@ -46,8 +46,6 @@ class NilaiKeterampilanController extends BaseController
     public function store(Request $request)
     {
         $nilai_keterampilan = new NilaiKeterampilan();
-        $randomId = rand(1,9999999);
-        $nilai_keterampilan->id = $randomId;
         $nilai_keterampilan->siswa_id = ($request->input('siswa_id'));
         $nilai_keterampilan->kd_nilai_pengetahuan = ($request->input('kd_nilai_keterampilan'));
         $nilai_keterampilan->ph1 = ($request->input('ph1'));

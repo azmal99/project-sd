@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru; //File Model
+use App\Models\Kelas; //File Model
 use App\Exceptions\Handler; //Error Handle
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
@@ -51,8 +52,6 @@ class GuruController extends BaseController
     public function store(Request $request)
     {
         $guru = new Guru();
-        $randomId = rand(1,9999999);
-        $guru->id = $randomId;
         $guru->kd_guru = ($request->input('kd_guru'));
         $guru->nama_guru = ($request->input('nama_guru'));
         $guru->username = ($request->input('username'));
@@ -66,6 +65,13 @@ class GuruController extends BaseController
         $guru->alamat = ($request->input('alamat'));
         
         $guru_store = $guru->save();
+
+        $kelas_id = ($request->input('kelas_id'));
+        $kelas = Kelas::where('id', '=', $kelas_id)->first();
+        $kelas->guru_id = $guru->id;
+        
+        $kelas->save();
+
         if($guru_store = true){
             return response()->json([
                 'success' => true,

@@ -85,8 +85,6 @@ class KelasController extends BaseController
     public function store(Request $request)
     {
         $kelas = new Kelas();
-        $randomId = rand(1,9999999);
-        $kelas->id = $randomId;
         $kelas->kd_kelas = ($request->input('kd_kelas'));
         $kelas->nama_kelas = ($request->input('nama_kelas'));
         $kelas->guru_id = ($request->input('guru_id'));
