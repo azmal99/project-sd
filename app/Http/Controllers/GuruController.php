@@ -51,7 +51,7 @@ class GuruController extends BaseController
     public function store(Request $request)
     {
         $guru = new Guru();
-        $randomId = rand(1,99);
+        $randomId = rand(1,9999999);
         $guru->id = $randomId;
         $guru->kd_guru = ($request->input('kd_guru'));
         $guru->nama_guru = ($request->input('nama_guru'));

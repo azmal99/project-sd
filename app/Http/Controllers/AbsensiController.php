@@ -46,7 +46,7 @@ class AbsensiController extends BaseController
     public function store(Request $request)
     {
         $absensi = new Absensi();
-        $randomId = rand(1,99);
+        $randomId = rand(1,9999999);
         $absensi->id = $randomId;
         $absensi->siswa_id = ($request->input('siswa_id'));
         $absensi->sakit = ($request->input('sakit'));

@@ -99,7 +99,7 @@ class RapotController extends BaseController
     public function store(Request $request)
     {
         $rapot = new Rapot();
-        $randomId = rand(1,99);
+        $randomId = rand(1,9999999);
         $rapot->id = $randomId;
         $rapot->siswa_id = ($request->input('siswa_id'));
         $rapot->kriteria_kelulusan = ($request->input('kriteria_kelulusan'));

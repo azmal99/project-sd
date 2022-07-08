@@ -46,7 +46,7 @@ class NilaiTugasController extends BaseController
     public function store(Request $request)
     {
         $nilai_tugas = new NilaiTugas();
-        $randomId = rand(1,99);
+        $randomId = rand(1,9999999);
         $nilai_tugas->id = $randomId;
         $nilai_tugas->siswa_id = ($request->input('siswa_id'));
         $nilai_tugas->kd_nilai_pengetahuan = ($request->input('kd_nilai_tugas'));

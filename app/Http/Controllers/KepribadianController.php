@@ -46,7 +46,7 @@ class KepribadianController extends BaseController
     public function store(Request $request)
     {
         $kepribadian = new Kepribadian();
-        $randomId = rand(1,99);
+        $randomId = rand(1,9999999);
         $kepribadian->id = $randomId;
         $kepribadian->siswa_id = ($request->input('siswa_id'));
         $kepribadian->sikap_spiritual = ($request->input('sikap_spiritual'));

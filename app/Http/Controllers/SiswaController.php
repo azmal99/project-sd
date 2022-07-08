@@ -57,7 +57,7 @@ class SiswaController extends BaseController
     public function store(Request $request)
     {
         $siswa = new Siswa();
-        $randomIdSiswa = rand(1,99);
+        $randomIdSiswa = rand(1,9999999);
         $siswa->id = $randomIdSiswa;
         $siswa->nis = ($request->input('nis'));
         $siswa->nama_siswa = ($request->input('nama_siswa'));
@@ -71,7 +71,7 @@ class SiswaController extends BaseController
         $siswa->enable_flag = ($request->input('enable_flag'));
 
         $absensi = new Absensi();
-        $randomIdAbsensi = rand(1,99);
+        $randomIdAbsensi = rand(1,9999999);
         $absensi->id = $randomIdAbsensi;
         $absensi->siswa_id = $randomIdSiswa;
         $absensi->sakit = null;
@@ -80,7 +80,7 @@ class SiswaController extends BaseController
         $absensi->tahun_ajar_id = null;
 
         $kepribadian = new Kepribadian();
-        $randomIdKepribadian = rand(1,99);
+        $randomIdKepribadian = rand(1,9999999);
         $kepribadian->id = $randomIdKepribadian;
         $kepribadian->siswa_id = $randomIdSiswa;
         $kepribadian->sikap_spiritual = null;
@@ -90,7 +90,7 @@ class SiswaController extends BaseController
         $kepribadian->cttn_walikelas = null;
 
         $nilai_keterampilan = new NilaiKeterampilan();
-        $randomIdKeterampilan = rand(1,99);
+        $randomIdKeterampilan = rand(1,9999999);
         $nilai_keterampilan->id = $randomIdKeterampilan;
         $nilai_keterampilan->siswa_id = $randomIdSiswa;
         $nilai_keterampilan->kd_nilai_keterampilan = null;
@@ -105,7 +105,7 @@ class SiswaController extends BaseController
         $nilai_keterampilan->tahun_ajar_id = null;
 
         $nilai_pengetahuan = new NilaiPengetahuan();
-        $randomIdPengetahuan = rand(1,99);
+        $randomIdPengetahuan = rand(1,9999999);
         $nilai_pengetahuan->id = $randomIdPengetahuan;
         $nilai_pengetahuan->siswa_id = $randomIdSiswa;
         $nilai_pengetahuan->kd_nilai_pengetahuan = null;
@@ -120,7 +120,7 @@ class SiswaController extends BaseController
         $nilai_pengetahuan->tahun_ajar_id = null;
 
         $nilai_tugas = new NilaiTugas();
-        $randomIdTugas = rand(1,99);
+        $randomIdTugas = rand(1,9999999);
         $nilai_tugas->id = $randomIdTugas;
         $nilai_tugas->siswa_id = $randomIdSiswa;
         $nilai_tugas->kd_nilai_tugas = null;
@@ -135,7 +135,7 @@ class SiswaController extends BaseController
         $nilai_tugas->tahun_ajar_id = null;
 
         $pembelajaran = new Pembelajaran();
-        $randomIdPembelajaran = rand(1,99);
+        $randomIdPembelajaran = rand(1,9999999);
         $pembelajaran->id = $randomIdPembelajaran;
         $pembelajaran->siswa_id = $randomIdSiswa;
         $pembelajaran->kelas_id = $siswa->kelas_id;
@@ -147,7 +147,7 @@ class SiswaController extends BaseController
         $pembelajaran->tahun_ajar_id = null;
 
         $rapot = new Rapot();
-        $randomIdRapot = rand(1,99);
+        $randomIdRapot = rand(1,9999999);
         $rapot->id = $randomIdRapot;
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
