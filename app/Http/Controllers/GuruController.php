@@ -66,11 +66,13 @@ class GuruController extends BaseController
         
         $guru_store = $guru->save();
 
-        $kelas_id = ($request->input('kelas_id'));
-        $kelas = Kelas::where('id', '=', $kelas_id)->first();
-        $kelas->guru_id = $guru->id;
-        
-        $kelas->save();
+        if ($request->input('kelas_id') <> null){
+            $kelas_id = ($request->input('kelas_id'));
+            $kelas = Kelas::where('id', '=', $kelas_id)->first();
+            $kelas->guru_id = $guru->id;
+            
+            $kelas->save();
+        }
 
         if($guru_store = true){
             return response()->json([
