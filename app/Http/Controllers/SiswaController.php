@@ -149,10 +149,10 @@ class SiswaController extends BaseController
         $kelas_id = $siswa->kelas_id;
         $kelas_siswa = Kelas::select('kd_kelas')
                         ->where('id', '=', $kelas_id)->get();
-
+        $kd_kelas = (string)$kelas_siswa;
         $mapel_siswa = DB::table('mata_pelajaran')
                         ->select('id')
-                        ->where('kd_mata_pelajaran', 'like', '%' . (string)$kelas_siswa . '%')->get();
+                        ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
         $mapel_siswa = (array)$mapel_siswa;
 
         for($i=0; $i<=count($mapel_siswa); $i++){
@@ -160,7 +160,7 @@ class SiswaController extends BaseController
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
-            $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i]->values();
+            $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
             $pembelajaran->kd_nilai_pengetahuan = null;
             $pembelajaran->kd_nilai_keterampilan = null;
             $pembelajaran->kd_nilai_tugas = null;
