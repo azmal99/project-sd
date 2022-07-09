@@ -6,6 +6,7 @@ use TahunAjaranController;
 use App\Models\Siswa; //File Model
 use App\Models\Absensi; //File Model
 use App\Models\Kepribadian; //File Model
+use App\Models\Kelas; //File Model
 use App\Models\NilaiPengetahuan; //File Model
 use App\Models\NilaiKeterampilan; //File Model
 use App\Models\NilaiTugas; //File Model
