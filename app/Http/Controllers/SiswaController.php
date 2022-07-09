@@ -12,6 +12,7 @@ use App\Models\NilaiTugas; //File Model
 use App\Models\Pembelajaran; //File Model
 use App\Models\Rapot; //File Model
 use App\Models\TahunAjaran; //File Model
+use App\Models\AnggotaEkstrakulikuler; //File Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -141,6 +142,18 @@ class SiswaController extends BaseController
         $rapot->enable_flag = 'Y';
         $rapot->tahun_ajar_id = null;
         $rapot->predikat = null;
+
+        if ($request->input('ekskul_id') <> null){
+            $ekskul_id = $request->input('ekskul_id');
+
+            $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+            $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
+            $anggota_ekstrakulikuler->nilai_ekskul = null;
+            $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
+            $anggota_ekstrakulikuler->enable_flag = 'Y';
+        
+            $anggota_ekstrakulikuler->save();
+        }
         
         $absensi->save();
         $kepribadian->save();
