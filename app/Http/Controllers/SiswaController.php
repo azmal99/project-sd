@@ -152,7 +152,7 @@ class SiswaController extends BaseController
 
         $mapel_siswa = DB::table('mata_pelajaran')
                         ->select('id')
-                        ->where('kd_mata_pelajaran', 'like', '%'.(string)$kelas_siswa.'%')->get();
+                        ->where('kd_mata_pelajaran', 'like', '%' . (string)$kelas_siswa . '%')->get();
         $mapel_siswa = (array)$mapel_siswa;
 
         for($i=0; $i<=count($mapel_siswa); $i++){
