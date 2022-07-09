@@ -126,15 +126,15 @@ class SiswaController extends BaseController
         $nilai_tugas->pas = null;
         $nilai_tugas->tahun_ajar_id = null;
 
-        $pembelajaran = new Pembelajaran();
-        $pembelajaran->siswa_id = $randomIdSiswa;
-        $pembelajaran->kelas_id = $siswa->kelas_id;
-        $pembelajaran->mata_pelajaran_id = null;
-        $pembelajaran->kd_nilai_pengetahuan = null;
-        $pembelajaran->kd_nilai_keterampilan = null;
-        $pembelajaran->kd_nilai_tugas = null;
-        $pembelajaran->jumlah_nilai = null;
-        $pembelajaran->tahun_ajar_id = null;
+        // $pembelajaran = new Pembelajaran();
+        // $pembelajaran->siswa_id = $randomIdSiswa;
+        // $pembelajaran->kelas_id = $siswa->kelas_id;
+        // $pembelajaran->mata_pelajaran_id = null;
+        // $pembelajaran->kd_nilai_pengetahuan = null;
+        // $pembelajaran->kd_nilai_keterampilan = null;
+        // $pembelajaran->kd_nilai_tugas = null;
+        // $pembelajaran->jumlah_nilai = null;
+        // $pembelajaran->tahun_ajar_id = null;
 
         $rapot = new Rapot();
         $rapot->siswa_id = $randomIdSiswa;
@@ -154,13 +154,31 @@ class SiswaController extends BaseController
         
             $anggota_ekstrakulikuler->save();
         }
+
+        $kelas_siswa = $siswa->kelas_id;
+        $mapel_siswa = DB::select('select id from mata_pelajaran where kd_mata_pelajaran like' + $kelas_siswa + '%');
+        $mapel_size = count($mapel_siswa);
+
+        for($i=0; $i<=$mapel_size; $i++){
+            $pembelajaran = new Pembelajaran();
+
+            $pembelajaran->siswa_id = $randomIdSiswa;
+            $pembelajaran->kelas_id = $siswa->kelas_id;
+            $pembelajaran->mata_pelajaran_id = $mapel_siswa->get($i)->id;
+            $pembelajaran->kd_nilai_pengetahuan = null;
+            $pembelajaran->kd_nilai_keterampilan = null;
+            $pembelajaran->kd_nilai_tugas = null;
+            $pembelajaran->jumlah_nilai = null;
+            $pembelajaran->tahun_ajar_id = null;
+
+            $pembelajaran->save();
+        }
         
         $absensi->save();
         $kepribadian->save();
         $nilai_keterampilan->save();
         $nilai_pengetahuan->save();
         $nilai_tugas->save();
-        $pembelajaran->save();
         $rapot->save();
 
         return response()->json([
