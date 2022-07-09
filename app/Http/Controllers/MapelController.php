@@ -82,6 +82,7 @@ class MapelController extends BaseController
         $mata_pelajaran = DB::table('mata_pelajaran')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
         ->where('mata_pelajaran.guru_id', $guru_id)
+        ->while('mata_pelajaran.enable_flag', '=', 'Y')
         ->join('guru','mata_pelajaran.guru_id','=','guru.id')
         ->get();
 

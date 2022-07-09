@@ -65,7 +65,7 @@ class KelasController extends BaseController
     {
         // $kelas = Kelas::where('guru_id', $guru_id)->first();
         $kelas = DB::table('kelas')
-        ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
+        ->select( 'kelas.id' ,'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
         ->where('kelas.guru_id', $guru_id)
         ->where('kelas.enable_flag', 'Y')
         ->join('guru','kelas.guru_id','=','guru.id')
