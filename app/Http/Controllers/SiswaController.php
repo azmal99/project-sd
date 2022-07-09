@@ -156,7 +156,8 @@ class SiswaController extends BaseController
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
-            $pembelajaran->mata_pelajaran_id = $mapel_siswa->get($i);
+            $mapel_id = array_values($mapel_siswa);
+            $pembelajaran->mata_pelajaran_id = $mapel_id[$i];
             $pembelajaran->kd_nilai_pengetahuan = null;
             $pembelajaran->kd_nilai_keterampilan = null;
             $pembelajaran->kd_nilai_tugas = null;
