@@ -126,16 +126,6 @@ class SiswaController extends BaseController
         $nilai_tugas->pas = null;
         $nilai_tugas->tahun_ajar_id = null;
 
-        // $pembelajaran = new Pembelajaran();
-        // $pembelajaran->siswa_id = $randomIdSiswa;
-        // $pembelajaran->kelas_id = $siswa->kelas_id;
-        // $pembelajaran->mata_pelajaran_id = null;
-        // $pembelajaran->kd_nilai_pengetahuan = null;
-        // $pembelajaran->kd_nilai_keterampilan = null;
-        // $pembelajaran->kd_nilai_tugas = null;
-        // $pembelajaran->jumlah_nilai = null;
-        // $pembelajaran->tahun_ajar_id = null;
-
         $rapot = new Rapot();
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
@@ -158,7 +148,7 @@ class SiswaController extends BaseController
         $kelas_id = $siswa->kelas_id;
         $kelas_siswa = DB::table('kelas')->select('kd_kelas')->where('id', $kelas_id);
         $kelas_ob = (object) $kelas_siswa;
-        $mapel_siswa = DB::table('mata_pelajaran')->select('id')->where('kd_kelas', 'like', $kelas_id, '%');
+        $mapel_siswa = DB::table('mata_pelajaran')->select('id')->where('kd_mata_pelajaran', 'like', $kelas_id, '%');
         $mapel_size = count($mapel_siswa);
 
         for($i=0; $i<=$mapel_size; $i++){
