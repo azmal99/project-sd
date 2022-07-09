@@ -150,9 +150,8 @@ class SiswaController extends BaseController
         $kelas_siswa = Kelas::select('kd_kelas')->where('id', '=', $kelas_id)->get();
         $kd_kelas = (string) $kelas_siswa;
         $mapel_siswa = DB::table('mata_pelajaran')->select('id')->where('kd_mata_pelajaran', 'like', $kd_kelas.'%');
-        $mapel_size = sizeof($mapel_siswa);
 
-        for($i=0; $i<=$mapel_size; $i++){
+        for($i=0; $i<=$mapel_siswa.length; $i++){
             $pembelajaran = new Pembelajaran();
 
             $pembelajaran->siswa_id = $randomIdSiswa;
