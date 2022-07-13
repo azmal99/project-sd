@@ -40,7 +40,6 @@ Route::post('/users/delete/{id}', [App\Http\Controllers\UsersController::class, 
 //router siswa
 Route::get('/siswa/index', [App\Http\Controllers\SiswaController::class, 'index']);
 Route::get('/siswa/show/{id}', [App\Http\Controllers\SiswaController::class, 'show']);
-Route::get('/siswa/showMapel/{kd_kelas}', [App\Http\Controllers\SiswaController::class, 'showMapel']);
 Route::post('/siswa/store', [App\Http\Controllers\SiswaController::class, 'store']);
 Route::post('/siswa/update/{id}', [App\Http\Controllers\SiswaController::class, 'update']);
 Route::post('/siswa/delete/{id}', [App\Http\Controllers\SiswaController::class, 'delete']);
