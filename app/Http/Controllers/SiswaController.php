@@ -155,7 +155,7 @@ class SiswaController extends BaseController
                         ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
         // $mapel_siswa = (array)$mapel_siswa;
 
-        for($i=0; $i<=count($mapel_siswa); $i++){
+        for($i=1; $i<=count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
 
             $pembelajaran->siswa_id = $randomIdSiswa;
