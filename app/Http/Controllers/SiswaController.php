@@ -54,7 +54,21 @@ class SiswaController extends BaseController
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
     }
-
+    
+    public function showMapel($kd_kelas)
+    {
+        $mapel_siswa = DB::table('mata_pelajaran')
+                        ->select('id')
+                        ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Siswa',
+            'data' => [
+                'user' => $mapel_siswa,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
     //CREATE
     public function store(Request $request)
     {
@@ -158,7 +172,7 @@ class SiswaController extends BaseController
         for($i=0; $i<=count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
 
-            $mapel = Arr::get($mapel_siswa, $i);
+            $mapel = data_get($mapel_siswa, $i);
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
