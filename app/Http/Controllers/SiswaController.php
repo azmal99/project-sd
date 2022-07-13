@@ -156,7 +156,7 @@ class SiswaController extends BaseController
         $mapel_siswa = (array)$mapel_siswa;
 
         foreach($mapel_siswa as $ms){
-            $mapel = $ms;
+            $mapel = (string)$ms;
 
             $pembelajaran = new Pembelajaran();
 
