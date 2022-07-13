@@ -155,14 +155,13 @@ class SiswaController extends BaseController
                         ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
         $mapel_siswa = (array)$mapel_siswa;
 
-        for($i=0; $i<=count($mapel_siswa); $i++){
-            $pembelajaran = new Pembelajaran();
+        foreach($mapel_siswa as $ms){
+            $mapel = $ms;
 
-            $mapel = $mapel_siswa->id[$i];
+            $pembelajaran = new Pembelajaran();
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
-            // $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
             $pembelajaran->mata_pelajaran_id = $mapel;
             $pembelajaran->kd_nilai_pengetahuan = null;
             $pembelajaran->kd_nilai_keterampilan = null;
@@ -172,6 +171,24 @@ class SiswaController extends BaseController
 
             $pembelajaran->save();
         }
+
+        // for($i=0; $i<=count($mapel_siswa); $i++){
+        //     $pembelajaran = new Pembelajaran();
+
+            
+
+        //     $pembelajaran->siswa_id = $randomIdSiswa;
+        //     $pembelajaran->kelas_id = $siswa->kelas_id;
+        //     // $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
+        //     $pembelajaran->mata_pelajaran_id = $mapel;
+        //     $pembelajaran->kd_nilai_pengetahuan = null;
+        //     $pembelajaran->kd_nilai_keterampilan = null;
+        //     $pembelajaran->kd_nilai_tugas = null;
+        //     $pembelajaran->jumlah_nilai = null;
+        //     $pembelajaran->tahun_ajar_id = null;
+
+        //     $pembelajaran->save();
+        // }
         
         $absensi->save();
         $kepribadian->save();
