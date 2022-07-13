@@ -65,7 +65,7 @@ class MapelController extends BaseController
 
     public function showByKdMapel($kd_mata_pelajaran)
     {
-        $mata_pelajaran = MataPelajaran::where('kd_mata_pelajaran', $kd_mata_pelajaran)->first();
+        $mata_pelajaran = MataPelajaran::where('kd_mata_pelajaran', $kd_mata_pelajaran)->get();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Mata Pelajaran By Kode Mapel',
