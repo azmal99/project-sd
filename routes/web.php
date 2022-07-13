@@ -40,6 +40,7 @@ Route::post('/users/delete/{id}', [App\Http\Controllers\UsersController::class, 
 //router siswa
 Route::get('/siswa/index', [App\Http\Controllers\SiswaController::class, 'index']);
 Route::get('/siswa/show/{id}', [App\Http\Controllers\SiswaController::class, 'show']);
+Route::get('/siswa/showMapel/{kd_kelas}', [App\Http\Controllers\SiswaController::class, 'showMapel']);
 Route::post('/siswa/store', [App\Http\Controllers\SiswaController::class, 'store']);
 Route::post('/siswa/update/{id}', [App\Http\Controllers\SiswaController::class, 'update']);
 Route::post('/siswa/delete/{id}', [App\Http\Controllers\SiswaController::class, 'delete']);
@@ -57,7 +58,6 @@ Route::post('/kelas/delete/{id}', [App\Http\Controllers\KelasController::class, 
 Route::get('/mata-pelajaran/index', [App\Http\Controllers\MapelController::class, 'index']);
 Route::get('/mata-pelajaran/show-mapel', [App\Http\Controllers\MapelController::class, 'indexMapel']);
 Route::get('/mata-pelajaran/show/{id}', [App\Http\Controllers\MapelController::class, 'show']);
-Route::get('/mata-pelajaran/showMapel/{kd_kelas}', [App\Http\Controllers\MapelController::class, 'showMapel']);
 Route::get('/mata-pelajaran/showByMapel/{kd_mata_pelajaran}', [App\Http\Controllers\MapelController::class, 'showByKdMapel']);
 Route::get('/mata-pelajaran/showByGuru/{kd_guru}', [App\Http\Controllers\MapelController::class, 'showByGuruId']);
 Route::post('/mata-pelajaran/store', [App\Http\Controllers\MapelController::class, 'store']);
