@@ -154,7 +154,7 @@ class SiswaController extends BaseController
                         ->select('id')
                         ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
 
-        for($i=0; $i<=count($mapel_siswa); $i++){
+        for($i=1; $i<=count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
 
             $mapel = $mapel_siswa[$i]->get();
