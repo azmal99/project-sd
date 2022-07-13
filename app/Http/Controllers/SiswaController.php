@@ -158,7 +158,7 @@ class SiswaController extends BaseController
         for($i=0; $i<=count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
 
-            $mapel = data_get($mapel_siswa, 'id');
+            $mapel = Arr::pluck($mapel_siswa[$i], 'id');
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
