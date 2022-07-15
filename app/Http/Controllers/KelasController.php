@@ -66,7 +66,7 @@ class KelasController extends BaseController
         // $kelas = Kelas::where('guru_id', $guru_id)->first();
         $kelas = DB::table('kelas')
         ->select( 'kelas.id' ,'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
-        ->where('kelas.guru_id', $guru_id)
+        ->where('guru.id', $guru_id)
         ->where('kelas.enable_flag', 'Y')
         ->join('guru','kelas.guru_id','=','guru.id')
         ->get();
@@ -87,7 +87,6 @@ class KelasController extends BaseController
         $kelas = new Kelas();
         $kelas->kd_kelas = ($request->input('kd_kelas'));
         $kelas->nama_kelas = ($request->input('nama_kelas'));
-        $kelas->guru_id = ($request->input('guru_id'));
         $kelas->enable_flag = ($request->input('enable_flag'));
         
         $kelas->save();

@@ -28,7 +28,8 @@ class Siswa extends Authenticatable
         'jns_kelamin',
         'tempat_lahir',
         'tgl_lahir',
-        'alamat'
+        'alamat',
+        'ekskul_id'
     ];
 
     /**

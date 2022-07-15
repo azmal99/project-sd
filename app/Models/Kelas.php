@@ -22,7 +22,6 @@ class Kelas extends Authenticatable
         'id',
         'kd_kelas',
         'nama_kelas',
-        'guru_id',
         'enable_flag'
     ];
 

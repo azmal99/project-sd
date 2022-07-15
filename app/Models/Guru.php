@@ -30,7 +30,9 @@ class Guru extends Authenticatable
         'jns_kelamin',
         'tempat_lahir',
         'tgl_lahir',
-        'alamat'
+        'alamat',
+        'kelas_id',
+        'mata_pelajaran_id'
     ];
 
     /**

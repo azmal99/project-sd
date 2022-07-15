@@ -69,6 +69,7 @@ class SiswaController extends BaseController
         $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
+        $siswa->ekskul_id = ($request->input('ekskul_id'));
 
         $siswa->save();
         $randomIdSiswa = $siswa->id;
@@ -134,17 +135,17 @@ class SiswaController extends BaseController
         $rapot->tahun_ajar_id = null;
         $rapot->predikat = null;
 
-        if ($request->input('ekskul_id') <> null){
-            $ekskul_id = $request->input('ekskul_id');
+        // if ($request->input('ekskul_id') <> null){
+        //     $ekskul_id = $request->input('ekskul_id');
 
-            $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
-            $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
-            $anggota_ekstrakulikuler->nilai_ekskul = null;
-            $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
-            $anggota_ekstrakulikuler->enable_flag = 'Y';
+        //     $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+        //     $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
+        //     $anggota_ekstrakulikuler->nilai_ekskul = null;
+        //     $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
+        //     $anggota_ekstrakulikuler->enable_flag = 'Y';
         
-            $anggota_ekstrakulikuler->save();
-        }
+        //     $anggota_ekstrakulikuler->save();
+        // }
 
         $kelas_id = $siswa->kelas_id;
         $kelas_siswa = Kelas::select('kd_kelas')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru; //File Model
 use App\Models\Kelas; //File Model
+use App\Models\MataPelajaran; //File Model
 use App\Exceptions\Handler; //Error Handle
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
@@ -63,16 +64,18 @@ class GuruController extends BaseController
         $tgl_lahir = ($request->input('tgl_lahir'));
         $guru->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $guru->alamat = ($request->input('alamat'));
+        $guru->kelas_id = ($request->input('kelas_id'));
+        $guru->mata_pelajaran_id = ($request->input('mata_pelajaran_id'));
         
         $guru_store = $guru->save();
 
-        if ($request->input('kelas_id') <> null){
-            $kelas_id = ($request->input('kelas_id'));
-            $kelas = Kelas::where('id', '=', $kelas_id)->first();
-            $kelas->guru_id = $guru->id;
+        // if ($request->input('kelas_id') <> null){
+        //     $kelas_id = ($request->input('kelas_id'));
+        //     $kelas = Kelas::where('id', '=', $kelas_id)->first();
+        //     $kelas->guru_id = $guru->id;
             
-            $kelas->save();
-        }
+        //     $kelas->save();
+        // }
 
         if($guru_store = true){
             return response()->json([

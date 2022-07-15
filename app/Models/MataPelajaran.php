@@ -22,7 +22,6 @@ class MataPelajaran extends Authenticatable
         'id',
         'kd_mata_pelajaran',
         'nama_mata_pelajaran',
-        'guru_id',
         'enable_flag'
     ];
 
