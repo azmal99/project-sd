@@ -66,8 +66,7 @@ class SiswaController extends BaseController
         $siswa->jns_kelamin = ($request->input('jns_kelamin'));
         $siswa->tempat_lahir = ($request->input('tempat_lahir'));
         $tgl_lahir = ($request->input('tgl_lahir'));
-        // $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
-        $siswa->tgl_lahir = Carbon::createFromFormat($tgl_lahir)->format('Y-m-d');
+        $siswa->tgl_lahir = Carbon::createFromFormat('m/d/Y', $tgl_lahir)->format('Y-m-d');
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
         $siswa->ekskul_id = ($request->input('ekskul_id'));
