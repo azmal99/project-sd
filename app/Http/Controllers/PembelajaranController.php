@@ -49,14 +49,13 @@ class PembelajaranController extends BaseController
         $kelas = ($request->input('kelas_id'));
         $mapel = ($request->input('mata_pelajaran_id'));
         
-        $penilaian = DB::table('Pembelajaran')
+        $penilaian = DB::table('pembelajaran')
                     ->select('siswa.id', 'siswa.nama_siswa', 'siswa.nis', 'siswa.nisn', 
                              'mata_pelajaran.nama_mata_pelajaran')
-                    ->where('kelas.id', $kelas)
+                    ->where('pembelajaran.kelas_id', $kelas)
                     ->where('mata_pelajaran.id', $mapel)
                     ->join('siswa', 'pembelajaran.siswa_id', '=', 'siswa.id')
                     ->join('mata_pelajaran', 'pembelajaran.mata_pelajaran_id', '=', 'mata_pelajaran.id')
-                    ->join('kelas', 'siswa.kelas_id', '=', 'kelas.id')
                     ->get();
 
         return response()->json([
