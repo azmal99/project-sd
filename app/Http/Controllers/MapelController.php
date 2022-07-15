@@ -79,7 +79,6 @@ class MapelController extends BaseController
 
     public function showByKelasId($kelas_id)
     {
-        $kelas_id = $siswa->kelas_id;
         $kelas_siswa = Kelas::select('kd_kelas')
                         ->where('id', '=', $kelas_id)->first();
         $kd_kelas = (string)$kelas_siswa;
