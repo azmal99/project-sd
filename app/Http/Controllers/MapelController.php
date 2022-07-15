@@ -20,7 +20,7 @@ class MapelController extends BaseController
     //List User
     public function index()
     {
-        $mata_pelajaran = MataPelajaran::all();
+        $mata_pelajaran = MataPelajaran::all()->order_by('mata_pelajaran.kd_mata_pelajaran');
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Menampilkan Semua Data Mata Pelajaran',
@@ -39,6 +39,7 @@ class MapelController extends BaseController
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
         ->where('mata_pelajaran.enable_flag', 'Y')
         ->join('guru','mata_pelajaran.id','=','guru.mata_pelajaran_id')
+        ->order_by('mata_pelajaran.kd_mata_pelajaran')
         ->get();
 
         return response()->json([
@@ -86,6 +87,7 @@ class MapelController extends BaseController
         ->where('guru.id', $guru_id)
         ->where('mata_pelajaran.enable_flag', '=', 'Y')
         ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
+        ->order_by('mata_pelajaran.kd_mata_pelajaran')
         ->get();
 
         return response()->json([
@@ -112,6 +114,7 @@ class MapelController extends BaseController
                                  'guru.nama_guru')
                         ->where('mata_pelajaran.kd_mata_pelajaran', 'like', $kd_kelas.'%')
                         ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
+                        ->order_by('mata_pelajaran.kd_mata_pelajaran')
                         ->get();
         return response()->json([
             'success' => true,
