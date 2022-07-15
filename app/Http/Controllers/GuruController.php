@@ -35,7 +35,6 @@ class GuruController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-
     public function show($id)
     {
         $guru = Guru::where('id', $id)->first();

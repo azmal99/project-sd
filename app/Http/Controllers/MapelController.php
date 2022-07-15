@@ -77,26 +77,6 @@ class MapelController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function showByKelasId($kelas_id)
-    {
-        $kelas_siswa = Kelas::select('kd_kelas')
-                        ->where('id', '=', $kelas_id)->first();
-        $kd_kelas = (string)$kelas_siswa;
-        $mapel_siswa = DB::table('mata_pelajaran')
-                        ->select('mata_pelajaran.kd_mata_pelajaran', 'mata_pelajaran.nama_mata_pelajaran', 'guru.id',
-                                 'guru.nama_guru')
-                        ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')
-                        ->join('guru','mata_pelajaran.id','=','guru.mata_pelajaran_id')->get();
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Show Mata Pelajaran By Kode Mapel',
-            'data' => [
-                'user' => $mapel_siswa,
-            ],
-        ],200)
-        ->header('Access-Control-Allow-Origin', '*');
-    }
-
     public function showByGuruId($guru_id)
     {
         // $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
@@ -112,6 +92,26 @@ class MapelController extends BaseController
             'message' => 'Berhasil Show Mata Pelajaran By Id Guru',
             'data' => [
                 'user' => $mata_pelajaran,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showByKelasId($kelas_id)
+    {
+        $kelas_siswa = Kelas::select('kd_kelas')
+                        ->where('id', '=', $kelas_id)->first();
+        $kd_kelas = (string)$kelas_siswa;
+        $mapel_siswa = DB::table('guru')
+                        ->select('mata_pelajaran.kd_mata_pelajaran', 'mata_pelajaran.nama_mata_pelajaran', 'guru.id',
+                                 'guru.nama_guru')
+                        ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')
+                        ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Mata Pelajaran By Kelas',
+            'data' => [
+                'user' => $mapel_siswa,
             ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
