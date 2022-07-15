@@ -149,7 +149,7 @@ class SiswaController extends BaseController
 
         $kelas_siswa = DB::table('kelas')
                         ->select('kd_kelas')
-                        ->where('id', '=', $kelas_id)->first();
+                        ->where('id', '=', $siswa->kelas_id)->first();
         $kd_kelas = $kelas_siswa->kd_kelas;
         $mapel_siswa = DB::table('mata_pelajaran')
                         ->select('id')
