@@ -54,8 +54,7 @@ class KelasController extends BaseController
                         ->where('id', '=', $kelas_id)->first();
         $kd_kelas = $kelas_siswa->kd_kelas;
         $mapel_siswa = DB::table('guru')
-                        ->select('mata_pelajaran.kd_mata_pelajaran', 'mata_pelajaran.nama_mata_pelajaran', 'guru.id',
-                                 'guru.nama_guru')
+                        ->select('mata_pelajaran.id', 'mata_pelajaran.kd_mata_pelajaran', 'mata_pelajaran.nama_mata_pelajaran')
                         ->where('mata_pelajaran.kd_mata_pelajaran', 'like', $kd_kelas.'%')
                         ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
                         ->get();
