@@ -99,14 +99,17 @@ class MapelController extends BaseController
 
     public function showByKelasId($kelas_id)
     {
-        $kelas_siswa = Kelas::select('kd_kelas')
-                        ->where('id', '=', $kelas_id)->first();
-        $kd_kelas = (string)$kelas_siswa;
+        // $kelas_siswa = Kelas::select('kd_kelas')
+        //                 ->where('id', '=', $kelas_id)->first();
+        // $kd_kelas = (string)$kelas_siswa;
         $mapel_siswa = DB::table('guru')
                         ->select('mata_pelajaran.kd_mata_pelajaran', 'mata_pelajaran.nama_mata_pelajaran', 'guru.id',
                                  'guru.nama_guru')
-                        ->where('mata_pelajaran.kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')
-                        ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')->get();
+                        ->where('kelas.id', $kelas_id)
+                        ->where('mata_pelajaran.kd_mata_pelajaran', 'like', '%' . 'kelas.kd_kelas' . '%')
+                        ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
+                        ->join('kelas','guru.kelas_id','=','kelas.id')
+                        ->get();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Mata Pelajaran By Kelas',
