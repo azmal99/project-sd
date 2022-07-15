@@ -31,10 +31,10 @@ class KelasController extends BaseController
 
     public function indexKelas()
     {
-        $kelas = DB::table('kelas')
+        $kelas = DB::table('guru')
         ->select( 'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
         ->where('kelas.enable_flag', 'Y')
-        ->join('guru','kelas.id','=','guru.kelas_id')
+        ->join('kelas','guru.kelas_id','=','kelas.id')
         ->get();
 
         return response()->json([
@@ -64,11 +64,11 @@ class KelasController extends BaseController
     public function showByGuru($guru_id)
     {
         // $kelas = Kelas::where('guru_id', $guru_id)->first();
-        $kelas = DB::table('kelas')
+        $kelas = DB::table('guru')
         ->select( 'kelas.id' ,'kelas.kd_kelas' , 'kelas.nama_kelas', 'guru.nama_guru')
         ->where('guru.id', $guru_id)
         ->where('kelas.enable_flag', 'Y')
-        ->join('guru','kelas.id','=','guru.kelas_id')
+        ->join('kelas','guru.kelas_id','=','kelas.id')
         ->get();
 
         return response()->json([

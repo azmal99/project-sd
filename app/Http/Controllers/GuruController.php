@@ -100,14 +100,6 @@ class GuruController extends BaseController
     {
         $guru = Guru::find($id)->update($request->all()); 
 
-        if ($request->input('kelas_id') <> null){
-            $kelas_id = ($request->input('kelas_id'));
-            $kelas = Kelas::where('id', '=', $kelas_id)->first();
-            $kelas->guru_id = $guru->id;
-            
-            $kelas->save();
-        }
-
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Update Guru',
