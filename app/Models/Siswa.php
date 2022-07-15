@@ -29,7 +29,8 @@ class Siswa extends Authenticatable
         'tempat_lahir',
         'tgl_lahir',
         'alamat',
-        'ekskul_id'
+        'ekskul_id',
+        'tahun_ajar_id'
     ];
 
     /**

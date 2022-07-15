@@ -70,6 +70,7 @@ class SiswaController extends BaseController
         $siswa->alamat = ($request->input('alamat'));
         $siswa->enable_flag = ($request->input('enable_flag'));
         $siswa->ekskul_id = ($request->input('ekskul_id'));
+        $siswa->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
         $siswa->save();
         $randomIdSiswa = $siswa->id;
@@ -132,7 +133,7 @@ class SiswaController extends BaseController
         $rapot->siswa_id = $randomIdSiswa;
         $rapot->kriteria_kelulusan = null;
         $rapot->enable_flag = 'Y';
-        $rapot->tahun_ajar_id = null;
+        $rapot->tahun_ajar_id = ($request->input('tahun_ajar_id'));
         $rapot->predikat = null;
 
         // if ($request->input('ekskul_id') <> null){
