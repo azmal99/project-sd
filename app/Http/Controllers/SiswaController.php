@@ -156,36 +156,36 @@ class SiswaController extends BaseController
                         ->where('kd_mata_pelajaran', 'like', $kd_kelas.'%')->get();
         // $mapel_siswa = (array)$mapel_siswa;
         
-        // for($i=0; $i<=count($mapel_siswa); $i++){
-        //     $pembelajaran = new Pembelajaran();
+        for($i=0; $i<count($mapel_siswa); $i++){
+            $pembelajaran = new Pembelajaran();
 
-        //     $mapel = $mapel_siswa[$i]->id;
+            $mapel = $mapel_siswa[$i]->id;
 
-        //     $pembelajaran->siswa_id = $randomIdSiswa;
-        //     $pembelajaran->kelas_id = $siswa->kelas_id;
-        //     // $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
-        //     $pembelajaran->mata_pelajaran_id = $mapel;
-        //     $pembelajaran->kd_nilai_pengetahuan = null;
-        //     $pembelajaran->kd_nilai_keterampilan = null;
-        //     $pembelajaran->kd_nilai_tugas = null;
-        //     $pembelajaran->jumlah_nilai = null;
-        //     $pembelajaran->tahun_ajar_id = null;
+            $pembelajaran->siswa_id = $randomIdSiswa;
+            $pembelajaran->kelas_id = $siswa->kelas_id;
+            // $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
+            $pembelajaran->mata_pelajaran_id = $mapel;
+            $pembelajaran->kd_nilai_pengetahuan = null;
+            $pembelajaran->kd_nilai_keterampilan = null;
+            $pembelajaran->kd_nilai_tugas = null;
+            $pembelajaran->jumlah_nilai = null;
+            $pembelajaran->tahun_ajar_id = null;
 
-        //     $pembelajaran->save();
-        // }
+            $pembelajaran->save();
+        }
         
-        // $absensi->save();
-        // $kepribadian->save();
-        // $nilai_keterampilan->save();
-        // $nilai_pengetahuan->save();
-        // $nilai_tugas->save();
-        // $rapot->save();
+        $absensi->save();
+        $kepribadian->save();
+        $nilai_keterampilan->save();
+        $nilai_pengetahuan->save();
+        $nilai_tugas->save();
+        $rapot->save();
 
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Tambah Siswa',
             'data' =>[
-                'user' => $mapel_siswa,
+                'user' => $siswa,
                 ],
         ], 201)
         ->header('Access-Control-Allow-Origin', '*');
