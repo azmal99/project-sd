@@ -81,11 +81,11 @@ class MapelController extends BaseController
     public function showByGuruId($guru_id)
     {
         // $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
-        $mata_pelajaran = DB::table('mata_pelajaran')
+        $mata_pelajaran = DB::table('guru')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
         ->where('guru.id', $guru_id)
         ->where('mata_pelajaran.enable_flag', '=', 'Y')
-        ->join('guru','mata_pelajaran.id','=','guru.mata_pelajaran_id')
+        ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
         ->get();
 
         return response()->json([
