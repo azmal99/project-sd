@@ -83,7 +83,7 @@ class MapelController extends BaseController
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
         ->where('guru.id', $guru_id)
         ->where('mata_pelajaran.enable_flag', '=', 'Y')
-        ->join('guru','mata_pelajaran.guru_id','=','guru.id')
+        ->join('guru','mata_pelajaran.id','=','guru.mata_pelajaran_id')
         ->get();
 
         return response()->json([
