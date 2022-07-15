@@ -81,7 +81,7 @@ class MapelController extends BaseController
         // $mata_pelajaran = MataPelajaran::where('guru_id', $guru_id)->first();
         $mata_pelajaran = DB::table('mata_pelajaran')
         ->select( 'mata_pelajaran.kd_mata_pelajaran' , 'mata_pelajaran.nama_mata_pelajaran', 'guru.nama_guru')
-        ->where('mata_pelajaran.guru_id', $guru_id)
+        ->where('guru.id', $guru_id)
         ->where('mata_pelajaran.enable_flag', '=', 'Y')
         ->join('guru','mata_pelajaran.guru_id','=','guru.id')
         ->get();
@@ -102,7 +102,6 @@ class MapelController extends BaseController
         $mata_pelajaran = new MataPelajaran();
         $mata_pelajaran->kd_mata_pelajaran = ($request->input('kd_mata_pelajaran'));
         $mata_pelajaran->nama_mata_pelajaran = ($request->input('nama_mata_pelajaran'));
-        $mata_pelajaran->guru_id = ($request->input('guru_id'));
         $mata_pelajaran->enable_flag = ($request->input('enable_flag'));
         
         $mata_pelajaran->save();
