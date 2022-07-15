@@ -48,6 +48,7 @@ Route::post('/siswa/delete/{id}', [App\Http\Controllers\SiswaController::class, 
 Route::get('/kelas/index', [App\Http\Controllers\KelasController::class, 'index']);
 Route::get('/kelas/show-kelas', [App\Http\Controllers\MapelController::class, 'indexKelas']);
 Route::get('/kelas/show/{id}', [App\Http\Controllers\KelasController::class, 'show']);
+Route::get('/kelas/showByMapel/{kelas_id}', [App\Http\Controllers\KelasController::class, 'showByMapel']);
 Route::get('/kelas/show-guru/{guru_id}', [App\Http\Controllers\KelasController::class, 'showByGuru']);
 Route::post('/kelas/store', [App\Http\Controllers\KelasController::class, 'store']);
 Route::post('/kelas/update/{id}', [App\Http\Controllers\KelasController::class, 'update']);
