@@ -28,12 +28,10 @@ class EkskulController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function showByGuru($guru_id)
+    public function showEkskul()
     {
         $ekskul = DB::table('ekskul')
                     ->select('ekskul.id', 'guru.nama_guru', 'guru.id', DB::raw('COUNT(anggota_ekstrakulikuler.siswa_id) as jumlah'))
-                    ->where('pembelajaran.kelas_id', $kelas)
-                    ->where('mata_pelajaran.id', $mapel)
                     ->join('guru', 'ekskul.guru_id', '=', 'guru.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
                     ->group_by('anggota_ekstrakulikuler.siswa_id')
@@ -41,9 +39,9 @@ class EkskulController extends BaseController
 
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil Show Mata Pelajaran By Kelas',
+            'message' => 'Berhasil Show Ekskul',
             'data' => [
-                'user' => $penilaian,
+                'user' => $ekskul,
             ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');

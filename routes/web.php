@@ -81,6 +81,7 @@ Route::post('/absensi/delete/{id}', [App\Http\Controllers\AbsensiController::cla
 //router ekskul
 Route::get('/ekstra-kulikuler/index', [App\Http\Controllers\EkskulController::class, 'index']);
 Route::get('/ekstra-kulikuler/show/{id}', [App\Http\Controllers\EkskulController::class, 'show']);
+Route::get('/ekstra-kulikuler/showEkskul', [App\Http\Controllers\EkskulController::class, 'showEkskul']);
 Route::post('/ekstra-kulikuler/store', [App\Http\Controllers\EkskulController::class, 'store']);
 Route::post('/ekstra-kulikuler/update/{id}', [App\Http\Controllers\EkskulController::class, 'update']);
 Route::post('/ekstra-kulikuler/delete/{id}', [App\Http\Controllers\EkskulController::class, 'delete']);
