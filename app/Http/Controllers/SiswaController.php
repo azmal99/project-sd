@@ -79,7 +79,7 @@ class SiswaController extends BaseController
         $absensi->sakit = null;
         $absensi->izin = null;
         $absensi->tanpa_alasan = null;
-        $absensi->tahun_ajar_id = null;
+        $absensi->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
         $kepribadian = new Kepribadian();
         $kepribadian->siswa_id = $randomIdSiswa;
@@ -100,7 +100,7 @@ class SiswaController extends BaseController
         $nilai_keterampilan->ph6 = null;
         $nilai_keterampilan->pts = null;
         $nilai_keterampilan->pas = null;
-        $nilai_keterampilan->tahun_ajar_id = null;
+        $nilai_keterampilan->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
         $nilai_pengetahuan = new NilaiPengetahuan();
         $nilai_pengetahuan->siswa_id = $randomIdSiswa;
@@ -113,7 +113,7 @@ class SiswaController extends BaseController
         $nilai_pengetahuan->ph6 = null;
         $nilai_pengetahuan->pts = null;
         $nilai_pengetahuan->pas = null;
-        $nilai_pengetahuan->tahun_ajar_id = null;
+        $nilai_pengetahuan->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
         $nilai_tugas = new NilaiTugas();
         $nilai_tugas->siswa_id = $randomIdSiswa;
@@ -126,7 +126,7 @@ class SiswaController extends BaseController
         $nilai_tugas->ph6 = null;
         $nilai_tugas->pts = null;
         $nilai_tugas->pas = null;
-        $nilai_tugas->tahun_ajar_id = null;
+        $nilai_tugas->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
         $rapot = new Rapot();
         $rapot->siswa_id = $randomIdSiswa;
@@ -154,7 +154,6 @@ class SiswaController extends BaseController
         $mapel_siswa = DB::table('mata_pelajaran')
                         ->select('id')
                         ->where('kd_mata_pelajaran', 'like', $kd_kelas.'%')->get();
-        // $mapel_siswa = (array)$mapel_siswa;
         
         for($i=0; $i<count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
@@ -163,13 +162,12 @@ class SiswaController extends BaseController
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
-            // $pembelajaran->mata_pelajaran_id = $mapel_siswa[$i];
             $pembelajaran->mata_pelajaran_id = $mapel;
             $pembelajaran->kd_nilai_pengetahuan = null;
             $pembelajaran->kd_nilai_keterampilan = null;
             $pembelajaran->kd_nilai_tugas = null;
             $pembelajaran->jumlah_nilai = null;
-            $pembelajaran->tahun_ajar_id = null;
+            $pembelajaran->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
             $pembelajaran->save();
         }

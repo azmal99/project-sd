@@ -89,6 +89,7 @@ Route::post('/ekstra-kulikuler/delete/{id}', [App\Http\Controllers\EkskulControl
 Route::get('/pembelajaran/index', [App\Http\Controllers\PembelajaranController::class, 'index']);
 Route::get('/pembelajaran/show/{id}', [App\Http\Controllers\PembelajaranController::class, 'show']);
 Route::post('/pembelajaran/store', [App\Http\Controllers\PembelajaranController::class, 'store']);
+Route::post('/pembelajaran/showByKelasMapel', [App\Http\Controllers\PembelajaranController::class, 'showByKelasMapel']);
 Route::post('/pembelajaran/update/{id}', [App\Http\Controllers\PembelajaranController::class, 'update']);
 Route::post('/pembelajaran/delete/{id}', [App\Http\Controllers\PembelajaranController::class, 'delete']);
 
