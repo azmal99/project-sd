@@ -193,6 +193,119 @@ class SiswaController extends BaseController
     // UPDATE
     public function update(Request $request, $id)
     {
+        $tahun_ajar_baru = ($request->input('tahun_ajar_id'));
+        $tahun_ajar_lama = DB::table(siswa)
+                        ->select('tahun_ajar_id')
+                        ->where('id', $id)
+                        ->get();
+
+        if ($tahun_ajar_baru <> $tahun_ajar_lama){
+            $absensi = new Absensi();
+            $absensi->siswa_id = $randomIdSiswa;
+            $absensi->sakit = null;
+            $absensi->izin = null;
+            $absensi->tanpa_alasan = null;
+            $absensi->tahun_ajar_id = $tahun_ajar_baru;
+
+            $kepribadian = new Kepribadian();
+            $kepribadian->siswa_id = $randomIdSiswa;
+            $kepribadian->sikap_spiritual = null;
+            $kepribadian->kerajinan = null;
+            $kepribadian->kebersihan = null;
+            $kepribadian->kerapihan = null;
+            $kepribadian->cttn_walikelas = null;
+
+            $nilai_keterampilan = new NilaiKeterampilan();
+            $nilai_keterampilan->siswa_id = $randomIdSiswa;
+            $nilai_keterampilan->kd_nilai_keterampilan = null;
+            $nilai_keterampilan->ph1 = null;
+            $nilai_keterampilan->ph2 = null;
+            $nilai_keterampilan->ph3 = null;
+            $nilai_keterampilan->ph4 = null;
+            $nilai_keterampilan->ph5 = null;
+            $nilai_keterampilan->ph6 = null;
+            $nilai_keterampilan->pts = null;
+            $nilai_keterampilan->pas = null;
+            $nilai_keterampilan->tahun_ajar_id = $tahun_ajar_baru;
+
+            $nilai_pengetahuan = new NilaiPengetahuan();
+            $nilai_pengetahuan->siswa_id = $randomIdSiswa;
+            $nilai_pengetahuan->kd_nilai_pengetahuan = null;
+            $nilai_pengetahuan->ph1 = null;
+            $nilai_pengetahuan->ph2 = null;
+            $nilai_pengetahuan->ph3 = null;
+            $nilai_pengetahuan->ph4 = null;
+            $nilai_pengetahuan->ph5 = null;
+            $nilai_pengetahuan->ph6 = null;
+            $nilai_pengetahuan->pts = null;
+            $nilai_pengetahuan->pas = null;
+            $nilai_pengetahuan->tahun_ajar_id = $tahun_ajar_baru;
+
+            $nilai_tugas = new NilaiTugas();
+            $nilai_tugas->siswa_id = $randomIdSiswa;
+            $nilai_tugas->kd_nilai_tugas = null;
+            $nilai_tugas->ph1 = null;
+            $nilai_tugas->ph2 = null;
+            $nilai_tugas->ph3 = null;
+            $nilai_tugas->ph4 = null;
+            $nilai_tugas->ph5 = null;
+            $nilai_tugas->ph6 = null;
+            $nilai_tugas->pts = null;
+            $nilai_tugas->pas = null;
+            $nilai_tugas->tahun_ajar_id = $tahun_ajar_baru;
+
+            $rapot = new Rapot();
+            $rapot->siswa_id = $randomIdSiswa;
+            $rapot->kriteria_kelulusan = null;
+            $rapot->enable_flag = 'Y';
+            $rapot->tahun_ajar_id = $tahun_ajar_baru;
+            $rapot->predikat = null;
+
+            // if ($request->input('ekskul_id') <> null){
+            //     $ekskul_id = $request->input('ekskul_id');
+
+            //     $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+            //     $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
+            //     $anggota_ekstrakulikuler->nilai_ekskul = null;
+            //     $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
+            //     $anggota_ekstrakulikuler->enable_flag = 'Y';
+            
+            //     $anggota_ekstrakulikuler->save();
+            // }
+
+            $kelas_siswa = DB::table('kelas')
+                            ->select('kd_kelas')
+                            ->where('id', '=', $siswa->kelas_id)->first();
+            $kd_kelas = $kelas_siswa->kd_kelas;
+            $mapel_siswa = DB::table('mata_pelajaran')
+                            ->select('id')
+                            ->where('kd_mata_pelajaran', 'like', $kd_kelas.'%')->get();
+            
+            for($i=0; $i<count($mapel_siswa); $i++){
+                $pembelajaran = new Pembelajaran();
+
+                $mapel = $mapel_siswa[$i]->id;
+
+                $pembelajaran->siswa_id = $randomIdSiswa;
+                $pembelajaran->kelas_id = $siswa->kelas_id;
+                $pembelajaran->mata_pelajaran_id = $mapel;
+                $pembelajaran->kd_nilai_pengetahuan = null;
+                $pembelajaran->kd_nilai_keterampilan = null;
+                $pembelajaran->kd_nilai_tugas = null;
+                $pembelajaran->jumlah_nilai = null;
+                $pembelajaran->tahun_ajar_id = $tahun_ajar_baru;
+
+                $pembelajaran->save();
+            }
+            
+            $absensi->save();
+            $kepribadian->save();
+            $nilai_keterampilan->save();
+            $nilai_pengetahuan->save();
+            $nilai_tugas->save();
+            $rapot->save();
+        }
+        
         $siswa = Siswa::find($id)->update($request->all()); 
         
         return response()->json([
