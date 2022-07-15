@@ -35,7 +35,7 @@ class EkskulController extends BaseController
                     ->select('ekskul.id', 'guru.nama_guru', 'guru.id', DB::raw('COUNT(anggota_ekstrakulikuler.siswa_id) as jumlah'))
                     ->join('guru', 'ekskul.guru_id', '=', 'guru.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
-                    ->group_by('anggota_ekstrakulikuler.siswa_id')
+                    // ->group_by('anggota_ekstrakulikuler.siswa_id')
                     ->get();
 
         return response()->json([
