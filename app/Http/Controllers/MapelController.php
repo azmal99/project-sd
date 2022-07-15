@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran; //File Model
 use App\Models\Kelas; //File Model
+use App\Models\Guru; //File Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
