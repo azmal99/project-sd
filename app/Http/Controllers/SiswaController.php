@@ -198,6 +198,7 @@ class SiswaController extends BaseController
                         ->select('tahun_ajar_id')
                         ->where('id', $id)
                         ->get();
+        $tahun_ajar_lama = $tahun_ajar_lama->tahun_ajar_id;
 
         if ($tahun_ajar_baru <> $tahun_ajar_lama){
             $absensi = new Absensi();
