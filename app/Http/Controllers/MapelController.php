@@ -112,7 +112,6 @@ class MapelController extends BaseController
                                  'guru.nama_guru')
                         ->where('mata_pelajaran.kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')
                         ->join('mata_pelajaran','guru.mata_pelajaran_id','=','mata_pelajaran.id')
-                        ->join('kelas','guru.kelas_id','=','kelas.id')
                         ->get();
         return response()->json([
             'success' => true,
