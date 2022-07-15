@@ -103,6 +103,7 @@ class MapelController extends BaseController
         //                 ->where('id', '=', $kelas_id)->first();
         // $kd_kelas = (string)$kelas_siswa;
         $kelas_siswa = DB::table('kelas')
+                        ->select('kd_kelas')
                         ->where('id', '=', $kelas_id)->first();
         $kd_kelas = (string)$kelas_siswa;
         $mapel_siswa = DB::table('guru')
