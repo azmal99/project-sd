@@ -147,10 +147,10 @@ class SiswaController extends BaseController
         //     $anggota_ekstrakulikuler->save();
         // }
 
-        $kelas_id = $siswa->kelas_id;
-        $kelas_siswa = Kelas::select('kd_kelas')
+        $kelas_siswa = DB::table('kelas')
+                        ->select('kd_kelas')
                         ->where('id', '=', $kelas_id)->first();
-        $kd_kelas = (string)$kelas_siswa;
+        $kd_kelas = $kelas_siswa->kd_kelas;
         $mapel_siswa = DB::table('mata_pelajaran')
                         ->select('id')
                         ->where('kd_mata_pelajaran', 'like', '%' . $kd_kelas . '%')->get();
@@ -159,7 +159,7 @@ class SiswaController extends BaseController
         for($i=0; $i<=count($mapel_siswa); $i++){
             $pembelajaran = new Pembelajaran();
 
-            $mapel = Arr::get($mapel_siswa, 'id', $i);
+            $mapel = $mapel_siswa[$i]->id;
 
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
