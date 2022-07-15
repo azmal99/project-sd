@@ -32,7 +32,8 @@ class EkskulController extends BaseController
     public function showEkskul()
     {
         $ekskul = DB::table('ekskul')
-                    ->select('ekskul.id', 'guru.nama_guru', 'guru.id', DB::raw('COUNT(anggota_ekstrakulikuler.siswa_id) as jumlah'))
+                    // ->select(array('ekskul.id', 'guru.nama_guru', 'guru.id', DB::raw('COUNT(anggota_ekstrakulikuler.siswa_id) as jumlah')))
+                    ->select('ekskul.id', 'guru.nama_guru', 'guru.id')
                     ->join('guru', 'ekskul.guru_id', '=', 'guru.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
                     // ->group_by('anggota_ekstrakulikuler.siswa_id')
