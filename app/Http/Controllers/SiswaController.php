@@ -185,7 +185,7 @@ class SiswaController extends BaseController
             'success' => true,
             'message' => 'Berhasil Tambah Siswa',
             'data' =>[
-                'user' => $siswa,
+                'user' => $mapel_siswa,
                 ],
         ], 201)
         ->header('Access-Control-Allow-Origin', '*');
