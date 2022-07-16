@@ -52,12 +52,12 @@ class EkskulController extends BaseController
 
     public function showBySiswaAll()
     {
-        $ekskul = DB::table('ekskul')
+        $ekskul = DB::table('siswa')
                     ->select('ekskul.id as ekskul_id', 'ekskul.nama_ekskul', 'siswa.nama_siswa', 'siswa.id as siswa_id',
                              'anggota_ekstrakulikuler.nilai_ekskul')
                     ->where('ekskul.enable_flag', '=', 'Y')
+                    ->join('ekskul', 'siswa.ekskul_id', '=', 'ekskul.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.id')
-                    ->join('siswa', 'anggota_ekstrakulikuler.siswa_id', '=', 'siswa.id')
                     ->orderBy('ekskul.nama_ekskul', 'ASC')
                     ->get();
         return response()->json([
@@ -72,13 +72,13 @@ class EkskulController extends BaseController
 
     public function showBySiswaId($siswa_id)
     {
-        $ekskul = DB::table('ekskul')
+        $ekskul = DB::table('siswa')
                     ->select('ekskul.id as ekskul_id', 'ekskul.nama_ekskul', 'siswa.nama_siswa', 'siswa.id as siswa_id',
                              'anggota_ekstrakulikuler.nilai_ekskul')
                     ->where('ekskul.enable_flag', '=', 'Y')
                     ->where('siswa.id', $siswa_id)
+                    ->join('ekskul', 'siswa.ekskul_id', '=', 'ekskul.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.id')
-                    ->join('siswa', 'anggota_ekstrakulikuler.siswa_id', '=', 'siswa.id')
                     ->orderBy('ekskul.nama_ekskul', 'ASC')
                     ->get();
         return response()->json([
