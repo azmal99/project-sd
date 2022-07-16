@@ -32,7 +32,7 @@ class AbsensiController extends BaseController
     public function showBySiswa()
     {
         $siswa = DB::table('absensi')
-                    ->select('siswa.id', 'siswa.nama_siswa', 'kepribadian.*')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'absensi.*')
                     ->join('siswa', 'absensi.siswa_id', '=', 'siswa.id')
                     ->get();
         return response()->json([
