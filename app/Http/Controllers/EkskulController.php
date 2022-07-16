@@ -50,6 +50,47 @@ class EkskulController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function showBySiswaAll()
+    {
+        $ekskul = DB::table('ekskul')
+                    ->select('ekskul.id as ekskul_id', 'ekskul.nama_ekskul', 'siswa.nama_siswa', 'siswa.id as siswa_id',
+                             'anggota_ekstrakulikuler.nilai_ekskul')
+                    ->where('ekskul.enable_flag', '=', 'Y')
+                    ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.id')
+                    ->join('siswa', 'anggota_ekstrakulikuler.siswa_id', '=', 'siswa.id')
+                    ->orderBy('ekskul.nama_ekskul', 'ASC')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Ekskul',
+            'data' => [
+                'user' => $ekskul,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showBySiswaID($siswa_id)
+    {
+        $ekskul = DB::table('ekskul')
+                    ->select('ekskul.id as ekskul_id', 'ekskul.nama_ekskul', 'siswa.nama_siswa', 'siswa.id as siswa_id',
+                             'anggota_ekstrakulikuler.nilai_ekskul')
+                    ->where('ekskul.enable_flag', '=', 'Y')
+                    ->where('siswa.id', $siswa_id)
+                    ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.id')
+                    ->join('siswa', 'anggota_ekstrakulikuler.siswa_id', '=', 'siswa.id')
+                    ->orderBy('ekskul.nama_ekskul', 'ASC')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Ekskul',
+            'data' => [
+                'user' => $ekskul,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     public function show($id)
     {
         $ekskul = Ekskul::where('id', $id)->first();
