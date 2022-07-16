@@ -28,6 +28,38 @@ class AbsensiController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function showBySiswa()
+    {
+        $siswa = DB::table('absensi')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'kepribadian.*')
+                    ->join('siswa', 'absensi.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Absensi By Siswa',
+            'data' => [
+                'user' => $siswa,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showBySiswaID($siswa_id)
+    {
+        $absensi = DB::table('absensi')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'absensi.*')
+                    ->where('absensi.siswa_id', $siswa_id)
+                    ->join('siswa', 'absensi.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Absensi By Siswa ID',
+            'data' => [
+                'user' => $siswa,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
 
     public function show($id)
     {

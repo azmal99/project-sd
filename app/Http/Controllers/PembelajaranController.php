@@ -44,6 +44,39 @@ class PembelajaranController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function showBySiswa()
+    {
+        $pembelajaran = DB::table('pembelajaran')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'pembelajaran.*')
+                    ->join('siswa', 'pembelajaran.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Pembelajaran',
+            'data' => [
+                'user' => $pembelajaran,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showBySiswaID($siswa_id)
+    {
+        $pembelajaran = DB::table('pembelajaran')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'pembelajaran.*')
+                    ->where('pembelajaran.siswa_id', $siswa_id)
+                    ->join('siswa', 'pembelajaran.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Pembelajaran',
+            'data' => [
+                'user' => $kepribadian,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     public function showByKelasMapel(Request $request)
     {
         $kelas = ($request->input('kelas_id'));

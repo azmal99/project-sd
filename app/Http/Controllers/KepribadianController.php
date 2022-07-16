@@ -42,6 +42,40 @@ class KepribadianController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function showBySiswa()
+    {
+        $kepribadian = DB::table('kepribadian')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'kepribadian.*')
+                    ->join('siswa', 'kepribadian.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Kepribadian',
+            'data' => [
+                'user' => $kepribadian,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+    public function showBySiswaID($siswa_id)
+    {
+        $kepribadian = DB::table('kepribadian')
+                    ->select('siswa.id', 'siswa.nama_siswa', 'kepribadian.*')
+                    ->where('kepribadian.siswa_id', $siswa_id)
+                    ->join('siswa', 'kepribadian.siswa_id', '=', 'siswa.id')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Kepribadian',
+            'data' => [
+                'user' => $kepribadian,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
+
     //CREATE
     public function store(Request $request)
     {

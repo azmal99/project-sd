@@ -54,6 +54,24 @@ class RapotController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    public function exportRapot()
+    {
+        $exportRapot = DB::table('rapot')
+                    ->select()
+                    ->where()
+                    ->join()
+                    ->get();
+                    
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Export Rapot',
+            'data' => [
+                'user' => $rapot,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');   
+    }
+
     public function show($id)
     {
         $rapot = Rapot::where('id', $id)->first();

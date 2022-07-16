@@ -75,6 +75,8 @@ Route::post('/tahun-ajaran/delete/{id}', [App\Http\Controllers\TahunAjaranContro
 //router absensi
 Route::get('/absensi/index', [App\Http\Controllers\AbsensiController::class, 'index']);
 Route::get('/absensi/show/{id}', [App\Http\Controllers\AbsensiController::class, 'show']);
+Route::get('/absensi/showBySiswa/', [App\Http\Controllers\AbsensiController::class, 'showBySiswa']);
+Route::get('/absensi/showBySiswaId/{siswa_id}', [App\Http\Controllers\AbsensiController::class, 'showBySiswaId']);
 Route::post('/absensi/store', [App\Http\Controllers\AbsensiController::class, 'store']);
 Route::post('/absensi/update/{id}', [App\Http\Controllers\AbsensiController::class, 'update']);
 Route::post('/absensi/delete/{id}', [App\Http\Controllers\AbsensiController::class, 'delete']);
@@ -90,6 +92,8 @@ Route::post('/ekstra-kulikuler/delete/{id}', [App\Http\Controllers\EkskulControl
 //router pembelajaran
 Route::get('/pembelajaran/index', [App\Http\Controllers\PembelajaranController::class, 'index']);
 Route::get('/pembelajaran/show/{id}', [App\Http\Controllers\PembelajaranController::class, 'show']);
+Route::get('/pembelajaran/showBySiswa/', [App\Http\Controllers\PembelajaranController::class, 'showBySiswa']);
+Route::get('/pembelajaran/showBySiswaId/{siswa_id}', [App\Http\Controllers\PembelajaranController::class, 'showBySiswaId']);
 Route::post('/pembelajaran/store', [App\Http\Controllers\PembelajaranController::class, 'store']);
 Route::post('/pembelajaran/showByKelasMapel', [App\Http\Controllers\PembelajaranController::class, 'showByKelasMapel']);
 Route::post('/pembelajaran/update/{id}', [App\Http\Controllers\PembelajaranController::class, 'update']);
@@ -107,6 +111,8 @@ Route::post('/rapot/delete/{id}', [App\Http\Controllers\RapotController::class, 
 //router kepribadian
 Route::get('/kepribadian/index', [App\Http\Controllers\KepribadianController::class, 'index']);
 Route::get('/kepribadian/show/{id}', [App\Http\Controllers\KepribadianController::class, 'show']);
+Route::get('/kepribadian/showBySiswa/', [App\Http\Controllers\KepribadianController::class, 'showBySiswa']);
+Route::get('/kepribadian/showBySiswaId/{siswa_id}', [App\Http\Controllers\KepribadianController::class, 'showBySiswaId']);
 Route::post('/kepribadian/store', [App\Http\Controllers\KepribadianController::class, 'store']);
 Route::post('/kepribadian/update/{id}', [App\Http\Controllers\KepribadianController::class, 'update']);
 Route::post('/kepribadian/delete/{id}', [App\Http\Controllers\KepribadianController::class, 'delete']);
