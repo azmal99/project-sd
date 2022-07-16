@@ -58,7 +58,7 @@ class EkskulController extends BaseController
                     ->where('ekskul.enable_flag', '=', 'Y')
                     ->join('ekskul', 'siswa.ekskul_id', '=', 'ekskul.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
-                    ->orderBy('ekskul.nama_ekskul', 'ASC')
+                    // ->orderBy('ekskul.nama_ekskul', 'ASC')
                     ->get();
         return response()->json([
             'success' => true,
@@ -79,8 +79,8 @@ class EkskulController extends BaseController
                     ->where('siswa.id', $siswa_id)
                     ->join('ekskul', 'siswa.ekskul_id', '=', 'ekskul.id')
                     ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
-                    ->orderBy('ekskul.nama_ekskul', 'ASC')
-                    ->get();
+                    // ->orderBy('ekskul.nama_ekskul', 'ASC')
+                    ->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Ekskul',
