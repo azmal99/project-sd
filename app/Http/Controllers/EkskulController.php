@@ -70,7 +70,7 @@ class EkskulController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function showBySiswaID($siswa_id)
+    public function showBySiswaId($siswa_id)
     {
         $ekskul = DB::table('ekskul')
                     ->select('ekskul.id as ekskul_id', 'ekskul.nama_ekskul', 'siswa.nama_siswa', 'siswa.id as siswa_id',
