@@ -73,7 +73,7 @@ class RapotController extends BaseController
                     ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
                     ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
                     ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
-                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
+                    ->orderBy('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
                     ->get();
         return response()->json([
             'success' => true,
@@ -105,7 +105,7 @@ class RapotController extends BaseController
                     ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
                     ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
                     ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
-                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
+                    ->orderBy('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
                     ->get();
         return response()->json([
             'success' => true,
@@ -137,7 +137,7 @@ class RapotController extends BaseController
                     ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
                     ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
                     ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
-                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
+                    ->orderBy('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
                     ->get();
         return response()->json([
             'success' => true,
