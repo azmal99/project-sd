@@ -78,6 +78,32 @@ class AnggotaEkskulController extends BaseController
         ->header('Access-Control-Allow-Origin', '*');
     }
 
+    // UPDATE
+    public function updateBySiswa(Request $request, $siswa_id)
+    {
+        $anggotaekskul_id = DB::table('siswa')
+                    ->select('anggota_ekstrakulikuler.id')
+                    ->where('ekskul.enable_flag', '=', 'Y')
+                    ->where('siswa.id', $siswa_id)
+                    ->join('ekskul', 'siswa.ekskul_id', '=', 'ekskul.id')
+                    ->join('anggota_ekstrakulikuler', 'ekskul.id', '=', 'anggota_ekstrakulikuler.ekskul_id')
+                    // ->orderBy('ekskul.nama_ekskul', 'ASC')
+                    ->first();
+
+        $anggotaekskul_id = $anggotaekskul_id->id;
+        $anggota_ekskul = AnggotaEkstrakulikuler::where('id', $anggotaekskul_id)->first();
+        $anggota_ekskul->nilai_ekskul = ($request->input('nilai_ekskul'));
+        
+        return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Update Ekskul',
+                'data' => [
+                    'user' => $anggota_ekskul,
+                ],
+        ],201)
+        ->header('Access-Control-Allow-Origin', '*');
+    }
+
     //DELETE
     public function delete($id)
     {
