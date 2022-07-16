@@ -51,7 +51,7 @@ class AbsensiController extends BaseController
                     ->select('siswa.id', 'siswa.nama_siswa', 'absensi.*')
                     ->where('absensi.siswa_id', $siswa_id)
                     ->join('siswa', 'absensi.siswa_id', '=', 'siswa.id')
-                    ->get();
+                    ->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Absensi By Siswa ID',

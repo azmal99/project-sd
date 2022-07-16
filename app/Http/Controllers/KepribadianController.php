@@ -65,7 +65,7 @@ class KepribadianController extends BaseController
                     ->select('siswa.id', 'siswa.nama_siswa', 'kepribadian.*')
                     ->where('kepribadian.siswa_id', $siswa_id)
                     ->join('siswa', 'kepribadian.siswa_id', '=', 'siswa.id')
-                    ->get();
+                    ->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Kepribadian',

@@ -66,7 +66,7 @@ class PembelajaranController extends BaseController
                     ->select('siswa.id', 'siswa.nama_siswa', 'pembelajaran.*')
                     ->where('pembelajaran.siswa_id', $siswa_id)
                     ->join('siswa', 'pembelajaran.siswa_id', '=', 'siswa.id')
-                    ->get();
+                    ->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Pembelajaran',
