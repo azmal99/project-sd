@@ -200,6 +200,25 @@ class SiswaController extends BaseController
                         ->get();
         $tahun_ajar_lama = $tahun_ajar_lama->tahun_ajar_id;
 
+        $ekskul_baru = ($request->input('ekskul_id'));
+        $ekskul_lama = DB::table('siswa')
+                        ->select('ekskul_id')
+                        ->where('id', $id)
+                        ->get();
+        $ekskul_lama = $ekskul_lama->ekskul_id;
+        
+        if ($ekskul_baru <> $ekskul_lama){
+            $ekskul_id = $request->input('ekskul_id');
+
+            $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+            $anggota_ekstrakulikuler->siswa_id = $id;
+            $anggota_ekstrakulikuler->nilai_ekskul = 0;
+            $anggota_ekstrakulikuler->ekskul_id = $ekskul_baru;
+            $anggota_ekstrakulikuler->enable_flag = 'Y';
+        
+            $anggota_ekstrakulikuler->save();
+        }
+
         if ($tahun_ajar_baru <> $tahun_ajar_lama){
             $absensi = new Absensi();
             $absensi->siswa_id = $randomIdSiswa;
