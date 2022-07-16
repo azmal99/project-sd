@@ -170,6 +170,8 @@ class RapotController extends BaseController
         $exportRapot->kebersihan = $rapot->kebersihan;
         $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
 
+        $exportRapot->save();
+
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Export Rapot By Mata Pelajaran',
