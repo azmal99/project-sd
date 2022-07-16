@@ -56,7 +56,7 @@ class AbsensiController extends BaseController
             'success' => true,
             'message' => 'Berhasil Show Absensi By Siswa ID',
             'data' => [
-                'user' => $siswa,
+                'user' => $absensi,
             ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
