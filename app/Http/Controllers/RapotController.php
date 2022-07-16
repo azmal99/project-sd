@@ -56,17 +56,94 @@ class RapotController extends BaseController
 
     public function exportRapot()
     {
-        $exportRapot = DB::table('rapot')
-                    ->select()
-                    ->where()
-                    ->join()
+        $exportRapot = DB::table('pembelajaran')
+                    ->select('siswa.nama_siswa', 'siswa.nis', 'siswa.nisn', 'mata_pelajaran.nama_mata_pelajaran',
+                             'nilai_pengetahuan.ph1 as np_ph1', 'nilai_pengetahuan.ph2 as np_ph2',
+                             'nilai_keterampilan.ph1 as nk_ph1', 'nilai_keterampilan.ph2 as nk_ph2',
+                             'nilai_tugas.ph1 as nt_ph1', 'nilai_tugas.ph2 as nt_ph2',
+                             'nilai_pengetahuan.pts', 'nilai_keterampilan.pts', 'nilai_tugas.pts',
+                             'ekskul.nama_ekskul', 'absensi.sakit', 'absensi.izin', 'absensi.tanpa_alasan',
+                             'kepribadian.sikap_spiritual', 'kepribadian.kerajinan', 'kepribadian.kerapihan',
+                             'kepribadian.kebersihan', 'kepribadian.cttn_walikelas')
+                    ->join('mata_pelajaran', 'pembelajaran.mata_pelajaran_id', '=', 'mata_pelajaran.id')
+                    ->join('nilai_pengetahuan', 'pembelajaran.nilai_pengetahuan_id', '=', 'nilai_pengetahuan.id')
+                    ->join('nilai_keterampilan', 'pembelajaran.nilai_keterampilan_id', '=', 'nilai_keterampilan.id')
+                    ->join('nilai_tugas', 'pembelajaran.siswa_id', '=', 'siswa.id')
+                    ->join('anggota_ekstrakulikuler', 'siswa.id', '=', 'anggota_ekstrakulikuler.siswa_id')
+                    ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
+                    ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
+                    ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
+                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
                     ->get();
-                    
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show Export Rapot',
             'data' => [
-                'user' => $rapot,
+                'user' => $exportRapot,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');   
+    }
+
+    public function exportRapotBySiswa($siswa_id)
+    {
+        $exportRapot = DB::table('pembelajaran')
+                    ->select('siswa.nama_siswa', 'siswa.nis', 'siswa.nisn', 'mata_pelajaran.nama_mata_pelajaran',
+                             'nilai_pengetahuan.ph1 as np_ph1', 'nilai_pengetahuan.ph2 as np_ph2',
+                             'nilai_keterampilan.ph1 as nk_ph1', 'nilai_keterampilan.ph2 as nk_ph2',
+                             'nilai_tugas.ph1 as nt_ph1', 'nilai_tugas.ph2 as nt_ph2',
+                             'nilai_pengetahuan.pts', 'nilai_keterampilan.pts', 'nilai_tugas.pts',
+                             'ekskul.nama_ekskul', 'absensi.sakit', 'absensi.izin', 'absensi.tanpa_alasan',
+                             'kepribadian.sikap_spiritual', 'kepribadian.kerajinan', 'kepribadian.kerapihan',
+                             'kepribadian.kebersihan', 'kepribadian.cttn_walikelas')
+                    ->where('pembelajaran.siswa_id', $siswa_id)
+                    ->join('mata_pelajaran', 'pembelajaran.mata_pelajaran_id', '=', 'mata_pelajaran.id')
+                    ->join('nilai_pengetahuan', 'pembelajaran.nilai_pengetahuan_id', '=', 'nilai_pengetahuan.id')
+                    ->join('nilai_keterampilan', 'pembelajaran.nilai_keterampilan_id', '=', 'nilai_keterampilan.id')
+                    ->join('nilai_tugas', 'pembelajaran.siswa_id', '=', 'siswa.id')
+                    ->join('anggota_ekstrakulikuler', 'siswa.id', '=', 'anggota_ekstrakulikuler.siswa_id')
+                    ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
+                    ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
+                    ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
+                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Export Rapot By Siswa',
+            'data' => [
+                'user' => $exportRapot,
+            ],
+        ],200)
+        ->header('Access-Control-Allow-Origin', '*');   
+    }
+
+    public function exportRapotByMapel($mapel_id)
+    {
+        $exportRapot = DB::table('pembelajaran')
+                    ->select('siswa.nama_siswa', 'siswa.nis', 'siswa.nisn', 'mata_pelajaran.nama_mata_pelajaran',
+                             'nilai_pengetahuan.ph1 as np_ph1', 'nilai_pengetahuan.ph2 as np_ph2',
+                             'nilai_keterampilan.ph1 as nk_ph1', 'nilai_keterampilan.ph2 as nk_ph2',
+                             'nilai_tugas.ph1 as nt_ph1', 'nilai_tugas.ph2 as nt_ph2',
+                             'nilai_pengetahuan.pts', 'nilai_keterampilan.pts', 'nilai_tugas.pts',
+                             'ekskul.nama_ekskul', 'absensi.sakit', 'absensi.izin', 'absensi.tanpa_alasan',
+                             'kepribadian.sikap_spiritual', 'kepribadian.kerajinan', 'kepribadian.kerapihan',
+                             'kepribadian.kebersihan', 'kepribadian.cttn_walikelas')
+                    ->where('pembelajaran.mata_pelajaran_id', $mapel_id)
+                    ->join('mata_pelajaran', 'pembelajaran.mata_pelajaran_id', '=', 'mata_pelajaran.id')
+                    ->join('nilai_pengetahuan', 'pembelajaran.nilai_pengetahuan_id', '=', 'nilai_pengetahuan.id')
+                    ->join('nilai_keterampilan', 'pembelajaran.nilai_keterampilan_id', '=', 'nilai_keterampilan.id')
+                    ->join('nilai_tugas', 'pembelajaran.siswa_id', '=', 'siswa.id')
+                    ->join('anggota_ekstrakulikuler', 'siswa.id', '=', 'anggota_ekstrakulikuler.siswa_id')
+                    ->join('ekskul', 'anggota_ekstrakulikuler.ekskul_id', '=', 'ekskul.id')
+                    ->join('absensi', 'siswa.id', '=', 'absensi.siswa_id')
+                    ->join('kepribadian', 'siswa.id', '=', 'kepribadian.siswa_id')
+                    ->order_by('mata_pelajaran.nama_mata_pelajaran', 'ekskul.nama_ekskul')
+                    ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Show Export Rapot By Mata Pelajaran',
+            'data' => [
+                'user' => $exportRapot,
             ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');   
