@@ -164,10 +164,10 @@ class SiswaController extends BaseController
             $pembelajaran->siswa_id = $randomIdSiswa;
             $pembelajaran->kelas_id = $siswa->kelas_id;
             $pembelajaran->mata_pelajaran_id = $mapel;
-            $pembelajaran->kd_nilai_pengetahuan = null;
-            $pembelajaran->kd_nilai_keterampilan = null;
-            $pembelajaran->kd_nilai_tugas = null;
-            $pembelajaran->jumlah_nilai = null;
+            $pembelajaran->nilai_pengetahuan_id = null;
+            $pembelajaran->nilai_keterampilan_id = null;
+            $pembelajaran->nilai_tugas_id = null;
+            $pembelajaran->jumlah_nilai = 0;
             $pembelajaran->tahun_ajar_id = ($request->input('tahun_ajar_id'));
 
             $pembelajaran->save();
@@ -290,10 +290,10 @@ class SiswaController extends BaseController
                 $pembelajaran->siswa_id = $randomIdSiswa;
                 $pembelajaran->kelas_id = $siswa->kelas_id;
                 $pembelajaran->mata_pelajaran_id = $mapel;
-                $pembelajaran->kd_nilai_pengetahuan = null;
-                $pembelajaran->kd_nilai_keterampilan = null;
-                $pembelajaran->kd_nilai_tugas = null;
-                $pembelajaran->jumlah_nilai = null;
+                $pembelajaran->nilai_pengetahuan_id = null;
+                $pembelajaran->nilai_keterampilan_id = null;
+                $pembelajaran->nilai_tugas_id = null;
+                $pembelajaran->jumlah_nilai = 0;
                 $pembelajaran->tahun_ajar_id = $tahun_ajar_baru;
 
                 $pembelajaran->save();
