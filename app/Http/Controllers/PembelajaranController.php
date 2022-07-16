@@ -71,7 +71,7 @@ class PembelajaranController extends BaseController
             'success' => true,
             'message' => 'Berhasil Show Pembelajaran',
             'data' => [
-                'user' => $kepribadian,
+                'user' => $pembelajaran,
             ],
         ],200)
         ->header('Access-Control-Allow-Origin', '*');
