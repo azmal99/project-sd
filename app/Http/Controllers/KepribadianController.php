@@ -103,7 +103,7 @@ class KepribadianController extends BaseController
     // UPDATE
     public function update(Request $request, $siswa_id)
     {
-        $kepribadian = Kepribadian::where('siswa_id', $id)->update($request->all()); 
+        $kepribadian = Kepribadian::where('siswa_id', $siswa_id)->update($request->all()); 
         
         return response()->json([
                 'success' => true,
