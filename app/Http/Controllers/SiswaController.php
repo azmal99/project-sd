@@ -136,17 +136,17 @@ class SiswaController extends BaseController
         $rapot->tahun_ajar_id = ($request->input('tahun_ajar_id'));
         $rapot->predikat = null;
 
-        // if ($request->input('ekskul_id') <> null){
-        //     $ekskul_id = $request->input('ekskul_id');
+        if ($request->input('ekskul_id') <> null){
+            $ekskul_id = $request->input('ekskul_id');
 
-        //     $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
-        //     $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
-        //     $anggota_ekstrakulikuler->nilai_ekskul = null;
-        //     $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
-        //     $anggota_ekstrakulikuler->enable_flag = 'Y';
+            $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+            $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
+            $anggota_ekstrakulikuler->nilai_ekskul = 0;
+            $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
+            $anggota_ekstrakulikuler->enable_flag = 'Y';
         
-        //     $anggota_ekstrakulikuler->save();
-        // }
+            $anggota_ekstrakulikuler->save();
+        }
 
         $kelas_siswa = DB::table('kelas')
                         ->select('kd_kelas')
@@ -262,17 +262,17 @@ class SiswaController extends BaseController
             $rapot->tahun_ajar_id = $tahun_ajar_baru;
             $rapot->predikat = null;
 
-            // if ($request->input('ekskul_id') <> null){
-            //     $ekskul_id = $request->input('ekskul_id');
+            if ($request->input('ekskul_id') <> null){
+                $ekskul_id = $request->input('ekskul_id');
 
-            //     $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
-            //     $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
-            //     $anggota_ekstrakulikuler->nilai_ekskul = null;
-            //     $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
-            //     $anggota_ekstrakulikuler->enable_flag = 'Y';
+                $anggota_ekstrakulikuler = new AnggotaEkstrakulikuler();
+                $anggota_ekstrakulikuler->siswa_id = $randomIdSiswa;
+                $anggota_ekstrakulikuler->nilai_ekskul = 0;
+                $anggota_ekstrakulikuler->ekskul_id = $ekskul_id;
+                $anggota_ekstrakulikuler->enable_flag = 'Y';
             
-            //     $anggota_ekstrakulikuler->save();
-            // }
+                $anggota_ekstrakulikuler->save();
+            }
 
             $kelas_siswa = DB::table('kelas')
                             ->select('kd_kelas')
