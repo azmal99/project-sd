@@ -127,7 +127,7 @@ Route::get('/anggota-ekskul/index', [App\Http\Controllers\AnggotaEkskulControlle
 Route::get('/anggota-ekskul/show/{id}', [App\Http\Controllers\AnggotaEkskulController::class, 'show']);
 Route::post('/anggota-ekskul/store', [App\Http\Controllers\AnggotaEkskulController::class, 'store']);
 Route::post('/anggota-ekskul/update/{id}', [App\Http\Controllers\AnggotaEkskulController::class, 'update']);
-Route::post('/anggota-ekskul/updateBySiswa/{siswa_id}', [App\Http\Controllers\AnggotaEkskulController::class, 'updateNilaiSiswa']);
+Route::post('/anggota-ekskul/updateBySiswa/{siswa_id}', [App\Http\Controllers\AnggotaEkskulController::class, 'updateBySiswa']);
 Route::post('/anggota-ekskul/delete/{id}', [App\Http\Controllers\AnggotaEkskulController::class, 'delete']);
 
 //router nilai pengtahuan
