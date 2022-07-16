@@ -78,7 +78,7 @@ Route::get('/absensi/show/{id}', [App\Http\Controllers\AbsensiController::class,
 Route::get('/absensi/showBySiswa/', [App\Http\Controllers\AbsensiController::class, 'showBySiswa']);
 Route::get('/absensi/showBySiswaId/{siswa_id}', [App\Http\Controllers\AbsensiController::class, 'showBySiswaId']);
 Route::post('/absensi/store', [App\Http\Controllers\AbsensiController::class, 'store']);
-Route::post('/absensi/update/{id}', [App\Http\Controllers\AbsensiController::class, 'update']);
+Route::post('/absensi/update/{siswa_id}', [App\Http\Controllers\AbsensiController::class, 'update']);
 Route::post('/absensi/delete/{id}', [App\Http\Controllers\AbsensiController::class, 'delete']);
 
 //router ekskul
@@ -119,7 +119,7 @@ Route::get('/kepribadian/show/{id}', [App\Http\Controllers\KepribadianController
 Route::get('/kepribadian/showBySiswa/', [App\Http\Controllers\KepribadianController::class, 'showBySiswa']);
 Route::get('/kepribadian/showBySiswaId/{siswa_id}', [App\Http\Controllers\KepribadianController::class, 'showBySiswaId']);
 Route::post('/kepribadian/store', [App\Http\Controllers\KepribadianController::class, 'store']);
-Route::post('/kepribadian/update/{id}', [App\Http\Controllers\KepribadianController::class, 'update']);
+Route::post('/kepribadian/update/{siswa_id}', [App\Http\Controllers\KepribadianController::class, 'update']);
 Route::post('/kepribadian/delete/{id}', [App\Http\Controllers\KepribadianController::class, 'delete']);
 
 //router anggota ekskul

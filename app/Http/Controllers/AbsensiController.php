@@ -98,9 +98,9 @@ class AbsensiController extends BaseController
     }
 
     // UPDATE
-    public function update(Request $request, $id)
+    public function update(Request $request, $siswa_id)
     {
-        $absensi = Absensi::find($id)->update($request->all()); 
+        $absensi = Absensi::where('siswa_id', $siswa_id)->update($request->all()); 
         
         return response()->json([
                 'success' => true,
