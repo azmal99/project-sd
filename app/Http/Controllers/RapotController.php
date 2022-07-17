@@ -12,6 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class RapotController extends BaseController
 {
@@ -59,6 +60,16 @@ class RapotController extends BaseController
     public function exportRapot()
     {
         return Excel::download(new RapotExport, 'leger.xlsx');    
+    }
+
+    public function exportPdfRapot()
+    {
+        $data = Rapot::all();
+
+        view()->share('data', $data);
+        $pdf= PDF::loadview('exportRapot-pdf');
+        // return 'OKE NIH BISA CUY';    
+        return $pdf->download('Laporan-Individu.pdf');
     }
 
     public function exportRapotBySiswa($siswa_id)
