@@ -29,9 +29,9 @@ class NilaiKeterampilanController extends BaseController
     }
 
 
-    public function show($id)
+    public function show($siswa_id)
     {
-        $nilai_keterampilan = NilaiKeterampilan::where('id', $id)->first();
+        $nilai_keterampilan = NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show NilaiKeterampilan',

@@ -29,9 +29,9 @@ class NilaiPengetahuanController extends BaseController
     }
 
 
-    public function show($id)
+    public function show($siswa_id)
     {
-        $nilai_pengetahuan = NilaiPengetahuan::where('id', $id)->first();
+        $nilai_pengetahuan = NilaiPengetahuan::where('siswa_id', $siswa_id)->first();
         return response()->json([
             'success' => true,
             'message' => 'Berhasil Show NilaiPengetahuan',
