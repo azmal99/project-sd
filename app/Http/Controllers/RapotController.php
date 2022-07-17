@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rapot; //File Model
+use App\Export\RapotExport; //File Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RapotController extends BaseController
 {
@@ -106,15 +108,9 @@ class RapotController extends BaseController
 
             $exportRapot->save();
         }
-            
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Show Export Rapot',
-            'data' => [
-                'user' => $exportRapot,
-            ],
-        ],200)
-        ->header('Access-Control-Allow-Origin', '*');   
+
+        return Excel::download(new RapotExport, 'leger.xlsx');
+         
     }
 
     public function exportRapotBySiswa($siswa_id)
