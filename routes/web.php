@@ -135,19 +135,19 @@ Route::post('/anggota-ekskul/delete/{id}', [App\Http\Controllers\AnggotaEkskulCo
 Route::get('/nilai-pengetahuan/index', [App\Http\Controllers\NilaiPengetahuanController::class, 'index']);
 Route::get('/nilai-pengetahuan/show/{id}', [App\Http\Controllers\NilaiPengetahuanController::class, 'show']);
 Route::post('/nilai-pengetahuan/store', [App\Http\Controllers\NilaiPengetahuanController::class, 'store']);
-Route::post('/nilai-pengetahuan/update/{id}', [App\Http\Controllers\NilaiPengetahuanController::class, 'update']);
+Route::post('/nilai-pengetahuan/update/{siswa_id}', [App\Http\Controllers\NilaiPengetahuanController::class, 'update']);
 Route::post('/nilai-pengetahuan/delete/{id}', [App\Http\Controllers\NilaiPengetahuanController::class, 'delete']);
 
 //router nilai keterampilan
 Route::get('/nilai-keterampilan/index', [App\Http\Controllers\NilaiKeterampilanController::class, 'index']);
 Route::get('/nilai-keterampilan/show/{id}', [App\Http\Controllers\NilaiKeterampilanController::class, 'show']);
 Route::post('/nilai-keterampilan/store', [App\Http\Controllers\NilaiKeterampilanController::class, 'store']);
-Route::post('/nilai-keterampilan/update/{id}', [App\Http\Controllers\NilaiKeterampilanController::class, 'update']);
+Route::post('/nilai-keterampilan/update/{siswa_id}', [App\Http\Controllers\NilaiKeterampilanController::class, 'update']);
 Route::post('/nilai-keterampilan/delete/{id}', [App\Http\Controllers\NilaiKeterampilanController::class, 'delete']);
 
 //router nilai tugas
 Route::get('/nilai-tugas/index', [App\Http\Controllers\NilaiTugasController::class, 'index']);
 Route::get('/nilai-tugas/show/{id}', [App\Http\Controllers\NilaiTugasController::class, 'show']);
 Route::post('/nilai-tugas/store', [App\Http\Controllers\NilaiTugasController::class, 'store']);
-Route::post('/nilai-tugas/update/{id}', [App\Http\Controllers\NilaiTugasController::class, 'update']);
+Route::post('/nilai-tugas/update/{siswa_id}', [App\Http\Controllers\NilaiTugasController::class, 'update']);
 Route::post('/nilai-tugas/delete/{id}', [App\Http\Controllers\NilaiTugasController::class, 'delete']);

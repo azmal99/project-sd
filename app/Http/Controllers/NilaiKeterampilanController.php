@@ -71,9 +71,31 @@ class NilaiKeterampilanController extends BaseController
     }
 
     // UPDATE
-    public function update(Request $request, $id)
+    public function update(Request $request, $siswa_id)
     {
-        $nilai_keterampilan = NilaiKeterampilan::find($id)->update($request->all()); 
+        // $nilai_keterampilan = NilaiKeterampilan::find($id)->update($request->all()); 
+
+        $nilai_keterampilan = NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
+        $nilai_keterampilan = ($request->input('tahuan_ajar_id'));
+        $nilai_keterampilan = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
+
+        $nilai_keterampilan->siswa_id = ($request->input('siswa_id'));
+        $nilai_keterampilan->kd_nilai_pengetahuan = ($request->input('kd_nilai_keterampilan'));
+        $nilai_keterampilan->ph1 = ($request->input('ph1'));
+        $nilai_keterampilan->ph2 = ($request->input('ph2'));
+        $nilai_keterampilan->ph3 = ($request->input('ph3'));
+        $nilai_keterampilan->ph4 = ($request->input('ph4'));
+        $nilai_keterampilan->ph5 = ($request->input('ph5'));
+        $nilai_keterampilan->ph6 = ($request->input('ph6'));
+        $nilai_keterampilan->pts = ($request->input('pts'));
+        $nilai_keterampilan->pas = ($request->input('psa'));
+        if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
+            $nilai_keterampilan->tahuan_ajar_id = ($tahun_ajaran_baru);
+        }else{
+            $nilai_keterampilan->tahuan_ajar_id = ($tahun_ajaran_lama);
+        }
+        
+        $nilai_keterampilan->save();
         
         return response()->json([
                 'success' => true,
