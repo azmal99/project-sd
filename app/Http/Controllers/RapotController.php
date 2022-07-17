@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rapot; //File Model
-use App\Export\RapotExport; //File Model
+use App\Exports\RapotExport; //File Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
