@@ -64,6 +64,16 @@ class RapotController extends BaseController
 
     public function exportPdfRapot()
     {
+        $data = Rapot::all();
+
+        view()->share('data', $data);
+        $pdf= PDF::loadview('exportRapot-pdf');
+        // return 'OKE NIH BISA CUY';    
+        return $pdf->download('Laporan-Individu.pdf');
+    }
+
+    public function exportPdfBySiswa($siswa_id)
+    {
         $exportRapot = DB::table('pembelajaran')
                     ->select('siswa.nama_siswa', 'siswa.nis', 'siswa.nisn', 'mata_pelajaran.nama_mata_pelajaran',
                              'nilai_pengetahuan.ph1 as np_ph1', 'nilai_pengetahuan.ph2 as np_ph2',

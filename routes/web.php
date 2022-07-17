@@ -109,6 +109,8 @@ Route::get('/rapot/exportRapot', [App\Http\Controllers\RapotController::class, '
 Route::get('/rapot/exportRapotBySiswa/{siswa_id}', [App\Http\Controllers\RapotController::class, 'exportRapotBySiswa']);
 Route::get('/rapot/exportRapotByMapel/{mapel_id}', [App\Http\Controllers\RapotController::class, 'exportRapotByMapel']);
 Route::get('/rapot/exportPdfRapot', [App\Http\Controllers\RapotController::class, 'exportPdfRapot']);
+Route::get('/rapot/exportPdfBySiswa/{siswa_id}', [App\Http\Controllers\RapotController::class, 'exportPdfBySiswa']);
+Route::get('/rapot/exportPdfByMapel/{mapel_id}', [App\Http\Controllers\RapotController::class, 'exportPdfByMapel']);
 Route::get('/rapot/show-siswa/{siswa_id}', [App\Http\Controllers\RapotController::class, 'showBySiswa']);
 Route::get('/rapot/exportRapot/', [App\Http\Controllers\RapotController::class, 'exportRapot']);
 Route::post('/rapot/store', [App\Http\Controllers\RapotController::class, 'store']);
