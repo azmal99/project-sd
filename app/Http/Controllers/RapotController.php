@@ -78,31 +78,34 @@ class RapotController extends BaseController
                     ->orderBy('ekskul.nama_ekskul', 'ASC')
                     ->get();
 
-        $exportRapot = new ExportRapot();
-        $exportRapot->nama_siswa = $rapot->nama_siswa;
-        $exportRapot->nis = $rapot->nama_siswa;
-        $exportRapot->nisn = $rapot->nama_siswa;
-        $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
-        $exportRapot->np_ph1 = $rapot->np_ph1;
-        $exportRapot->np_ph2 = $rapot->np_ph2;
-        $exportRapot->nk_ph1 = $rapot->nk_ph1;
-        $exportRapot->nk_ph2 = $rapot->nk_ph2;
-        $exportRapot->nt_ph1 = $rapot->nt_ph1;
-        $exportRapot->nt_ph2 = $rapot->nt_ph2;
-        $exportRapot->np_pts = $rapot->np_pts;
-        $exportRapot->nk_pts = $rapot->nk_pts;
-        $exportRapot->nt_pts = $rapot->nt_pts;
-        $exportRapot->nama_ekskul = $rapot->nama_ekskul;
-        $exportRapot->sakit = $rapot->namasakit_siswa;
-        $exportRapot->izin = $rapot->izin;
-        $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
-        $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
-        $exportRapot->kerajinan = $rapot->kerajinan;
-        $exportRapot->kerapihan = $rapot->kerapihan;
-        $exportRapot->kebersihan = $rapot->kebersihan;
-        $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
+        for($i=0; $i<count($exportRapot); $i++){
+            $exportRapot = new ExportRapot();
+            
+            $exportRapot->nama_siswa = $rapot->nama_siswa;
+            $exportRapot->nis = $rapot->nama_siswa;
+            $exportRapot->nisn = $rapot->nama_siswa;
+            $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
+            $exportRapot->np_ph1 = $rapot->np_ph1;
+            $exportRapot->np_ph2 = $rapot->np_ph2;
+            $exportRapot->nk_ph1 = $rapot->nk_ph1;
+            $exportRapot->nk_ph2 = $rapot->nk_ph2;
+            $exportRapot->nt_ph1 = $rapot->nt_ph1;
+            $exportRapot->nt_ph2 = $rapot->nt_ph2;
+            $exportRapot->np_pts = $rapot->np_pts;
+            $exportRapot->nk_pts = $rapot->nk_pts;
+            $exportRapot->nt_pts = $rapot->nt_pts;
+            $exportRapot->nama_ekskul = $rapot->nama_ekskul;
+            $exportRapot->sakit = $rapot->namasakit_siswa;
+            $exportRapot->izin = $rapot->izin;
+            $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
+            $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
+            $exportRapot->kerajinan = $rapot->kerajinan;
+            $exportRapot->kerapihan = $rapot->kerapihan;
+            $exportRapot->kebersihan = $rapot->kebersihan;
+            $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
 
-        $exportRapot->save();
+            $exportRapot->save();
+        }
             
         return response()->json([
             'success' => true,
@@ -139,31 +142,34 @@ class RapotController extends BaseController
                     ->orderBy('ekskul.nama_ekskul', 'ASC')
                     ->get();
 
-        $exportRapot = new ExportRapot();
-        $exportRapot->nama_siswa = $rapot->nama_siswa;
-        $exportRapot->nis = $rapot->nama_siswa;
-        $exportRapot->nisn = $rapot->nama_siswa;
-        $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
-        $exportRapot->np_ph1 = $rapot->np_ph1;
-        $exportRapot->np_ph2 = $rapot->np_ph2;
-        $exportRapot->nk_ph1 = $rapot->nk_ph1;
-        $exportRapot->nk_ph2 = $rapot->nk_ph2;
-        $exportRapot->nt_ph1 = $rapot->nt_ph1;
-        $exportRapot->nt_ph2 = $rapot->nt_ph2;
-        $exportRapot->np_pts = $rapot->np_pts;
-        $exportRapot->nk_pts = $rapot->nk_pts;
-        $exportRapot->nt_pts = $rapot->nt_pts;
-        $exportRapot->nama_ekskul = $rapot->nama_ekskul;
-        $exportRapot->sakit = $rapot->namasakit_siswa;
-        $exportRapot->izin = $rapot->izin;
-        $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
-        $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
-        $exportRapot->kerajinan = $rapot->kerajinan;
-        $exportRapot->kerapihan = $rapot->kerapihan;
-        $exportRapot->kebersihan = $rapot->kebersihan;
-        $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
+        for($i=0; $i<count($exportRapot); $i++){
+            $exportRapot = new ExportRapot();
 
-        $exportRapot->save();
+            $exportRapot->nama_siswa = $rapot->nama_siswa;
+            $exportRapot->nis = $rapot->nama_siswa;
+            $exportRapot->nisn = $rapot->nama_siswa;
+            $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
+            $exportRapot->np_ph1 = $rapot->np_ph1;
+            $exportRapot->np_ph2 = $rapot->np_ph2;
+            $exportRapot->nk_ph1 = $rapot->nk_ph1;
+            $exportRapot->nk_ph2 = $rapot->nk_ph2;
+            $exportRapot->nt_ph1 = $rapot->nt_ph1;
+            $exportRapot->nt_ph2 = $rapot->nt_ph2;
+            $exportRapot->np_pts = $rapot->np_pts;
+            $exportRapot->nk_pts = $rapot->nk_pts;
+            $exportRapot->nt_pts = $rapot->nt_pts;
+            $exportRapot->nama_ekskul = $rapot->nama_ekskul;
+            $exportRapot->sakit = $rapot->namasakit_siswa;
+            $exportRapot->izin = $rapot->izin;
+            $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
+            $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
+            $exportRapot->kerajinan = $rapot->kerajinan;
+            $exportRapot->kerapihan = $rapot->kerapihan;
+            $exportRapot->kebersihan = $rapot->kebersihan;
+            $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
+
+            $exportRapot->save();
+        }
             
         return response()->json([
             'success' => true,
@@ -200,31 +206,34 @@ class RapotController extends BaseController
         ->orderBy('ekskul.nama_ekskul', 'ASC')
         ->get();
 
-        $exportRapot = new ExportRapot();
-        $exportRapot->nama_siswa = $rapot->nama_siswa;
-        $exportRapot->nis = $rapot->nama_siswa;
-        $exportRapot->nisn = $rapot->nama_siswa;
-        $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
-        $exportRapot->np_ph1 = $rapot->np_ph1;
-        $exportRapot->np_ph2 = $rapot->np_ph2;
-        $exportRapot->nk_ph1 = $rapot->nk_ph1;
-        $exportRapot->nk_ph2 = $rapot->nk_ph2;
-        $exportRapot->nt_ph1 = $rapot->nt_ph1;
-        $exportRapot->nt_ph2 = $rapot->nt_ph2;
-        $exportRapot->np_pts = $rapot->np_pts;
-        $exportRapot->nk_pts = $rapot->nk_pts;
-        $exportRapot->nt_pts = $rapot->nt_pts;
-        $exportRapot->nama_ekskul = $rapot->nama_ekskul;
-        $exportRapot->sakit = $rapot->namasakit_siswa;
-        $exportRapot->izin = $rapot->izin;
-        $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
-        $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
-        $exportRapot->kerajinan = $rapot->kerajinan;
-        $exportRapot->kerapihan = $rapot->kerapihan;
-        $exportRapot->kebersihan = $rapot->kebersihan;
-        $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
+        for($i=0; $i<count($exportRapot); $i++){
+            $exportRapot = new ExportRapot();
 
-        $exportRapot->save();
+            $exportRapot->nama_siswa = $rapot->nama_siswa;
+            $exportRapot->nis = $rapot->nama_siswa;
+            $exportRapot->nisn = $rapot->nama_siswa;
+            $exportRapot->nama_mata_pelajaran = $rapot->nama_siswa;
+            $exportRapot->np_ph1 = $rapot->np_ph1;
+            $exportRapot->np_ph2 = $rapot->np_ph2;
+            $exportRapot->nk_ph1 = $rapot->nk_ph1;
+            $exportRapot->nk_ph2 = $rapot->nk_ph2;
+            $exportRapot->nt_ph1 = $rapot->nt_ph1;
+            $exportRapot->nt_ph2 = $rapot->nt_ph2;
+            $exportRapot->np_pts = $rapot->np_pts;
+            $exportRapot->nk_pts = $rapot->nk_pts;
+            $exportRapot->nt_pts = $rapot->nt_pts;
+            $exportRapot->nama_ekskul = $rapot->nama_ekskul;
+            $exportRapot->sakit = $rapot->namasakit_siswa;
+            $exportRapot->izin = $rapot->izin;
+            $exportRapot->tanpa_alasan = $rapot->tanpa_alasan;
+            $exportRapot->sikap_spiritual = $rapot->sikap_spiritual;
+            $exportRapot->kerajinan = $rapot->kerajinan;
+            $exportRapot->kerapihan = $rapot->kerapihan;
+            $exportRapot->kebersihan = $rapot->kebersihan;
+            $exportRapot->cttn_walikelas = $rapot->cttn_walikelas;
+
+            $exportRapot->save();
+        }
 
         return response()->json([
             'success' => true,
