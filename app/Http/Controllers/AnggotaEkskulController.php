@@ -94,6 +94,8 @@ class AnggotaEkskulController extends BaseController
         $anggotaekskul_id = $anggotaekskul_id->id;
         $anggota_ekskul = AnggotaEkstrakulikuler::where('id', $anggotaekskul_id)->first();
         $anggota_ekskul->nilai_ekskul = ($request->input('nilai_ekskul'));
+
+        $anggota_ekskul->save();        
         
         return response()->json([
                 'success' => true,
