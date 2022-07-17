@@ -20,10 +20,8 @@ class ExportRapot extends Authenticatable
      */
     protected $fillable = [
         'nama_siswa', 'nis', 'nisn', 'nama_mata_pelajaran',
-        'np_ph1', 'np_ph2',
-        'nk_ph1', 'nk_ph2',
-        'nt_ph1', 'nt_ph2',
-        'np_pts', 'nk_pts', 'nt_pts',
+        'np_ph1', 'np_ph2', 'nk_ph1', 'nk_ph2',
+        'nt_ph1', 'nt_ph2', 'np_pts', 'nk_pts', 'nt_pts',
         'nama_ekskul', 'sakit', 'izin', 'tanpa_alasan',
         'sikap_spiritual', 'kerajinan', 'kerapihan',
         'kebersihan', 'cttn_walikelas'

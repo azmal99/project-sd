@@ -15,6 +15,6 @@ class RapotExport implements FromCollection
     {
         //
         // return ExportRaport::all();
-        return Siswa::all();
+        return ExportRapot::all();
     }
 }
