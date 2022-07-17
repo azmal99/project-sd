@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Rapot; //File Model
 use App\Models\Siswa; //File Model
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class RapotExport implements FromCollection
@@ -12,6 +13,8 @@ class RapotExport implements FromCollection
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    use Exportable;
     public function collection()
     {
         //
@@ -66,7 +69,7 @@ class RapotExport implements FromCollection
 
             $exportRapot->save();
         }
-        
+
         return $exportRapot;
     }
 }
