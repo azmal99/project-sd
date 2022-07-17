@@ -90,9 +90,9 @@ class NilaiKeterampilanController extends BaseController
         $nilai_keterampilan->pts = ($request->input('pts'));
         $nilai_keterampilan->pas = ($request->input('pas'));
         if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
-            $nilai_keterampilan->tahun_ajar_id = (int)$tahun_ajaran_baru;
+            $nilai_keterampilan->tahun_ajar_id = ($request->input('tahun_ajar_id'));
         }else{
-            $nilai_keterampilan->tahun_ajar_id = (int)$tahun_ajaran_lama;
+            $nilai_keterampilan->tahun_ajar_id = $nilai_keterampilan->tahun_ajar_id;
         }
         
         $nilai_keterampilan->save();
