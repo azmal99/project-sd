@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Rapot; //File Model
+use App\Models\Siswa; //File Model
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class RapotExport implements FromCollection
@@ -13,6 +14,7 @@ class RapotExport implements FromCollection
     public function collection()
     {
         //
-        return ExportRaport::all();
+        // return ExportRaport::all();
+        return Siswa::all();
     }
 }
