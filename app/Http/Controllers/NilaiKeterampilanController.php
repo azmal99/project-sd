@@ -56,7 +56,7 @@ class NilaiKeterampilanController extends BaseController
         $nilai_keterampilan->ph5 = ($request->input('ph5'));
         $nilai_keterampilan->ph6 = ($request->input('ph6'));
         $nilai_keterampilan->pts = ($request->input('pts'));
-        $nilai_keterampilan->pas = ($request->input('psa'));
+        $nilai_keterampilan->pas = ($request->input('pas'));
         $nilai_keterampilan->tahuan_ajar_id = ($request->input('tahuan_ajar_id'));
         
         $nilai_keterampilan->save();
@@ -75,10 +75,12 @@ class NilaiKeterampilanController extends BaseController
     public function update(Request $request, $siswa_id)
     {
         // $nilai_keterampilan = NilaiKeterampilan::find($id)->update($request->all()); 
-
-        $nilai_keterampilan = NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
+        $nilai_keterampilan = DB::table('nilai_keterampilan')
+                    ->select('*')
+                    ->where('siswa_id', $siswa_id)
+                    ->get();
         $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
-        $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
+        $tahun_ajaran_lama = $nilai_keterampilan->tahun_ajar_id;
 
         $nilai_keterampilan->siswa_id = ($request->input('siswa_id'));
         $nilai_keterampilan->kd_nilai_keterampilan = ($request->input('kd_nilai_keterampilan'));
@@ -89,7 +91,7 @@ class NilaiKeterampilanController extends BaseController
         $nilai_keterampilan->ph5 = ($request->input('ph5'));
         $nilai_keterampilan->ph6 = ($request->input('ph6'));
         $nilai_keterampilan->pts = ($request->input('pts'));
-        $nilai_keterampilan->pas = ($request->input('psa'));
+        $nilai_keterampilan->pas = ($request->input('pas'));
         if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
             $nilai_keterampilan->tahun_ajar_id = ($tahun_ajaran_baru);
         }else{
