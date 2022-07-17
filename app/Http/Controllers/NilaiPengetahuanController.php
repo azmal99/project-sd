@@ -77,7 +77,7 @@ class NilaiPengetahuanController extends BaseController
         // $nilai_pengetahuan = NilaiPengetahuan::find($id)->update($request->all());
         
         $nilai_pengetahuan = NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
-        $tahun_ajaran_baru = ($request->input('tahuan_ajar_id'));
+        $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
         $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
 
         $nilai_pengetahuan->siswa_id = ($request->input('siswa_id'));
@@ -91,9 +91,9 @@ class NilaiPengetahuanController extends BaseController
         $nilai_pengetahuan->pts = ($request->input('pts'));
         $nilai_pengetahuan->pas = ($request->input('psa'));
         if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
-            $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_baru);
+            $nilai_pengetahuan->tahun_ajar_id = ($tahun_ajaran_baru);
         }else{
-            $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_lama);
+            $nilai_pengetahuan->tahun_ajar_id = ($tahun_ajaran_lama);
         }
         
         $nilai_pengetahuan->save();

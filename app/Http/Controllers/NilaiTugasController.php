@@ -76,7 +76,7 @@ class NilaiTugasController extends BaseController
     {
         // $nilai_keternilai_tugasampilan = NilaiTugas::find($siswa_id)->update($request->all());
         $nilai_tugas = NilaiTugas::where('siswa_id', $siswa_id)->first();
-        $tahun_ajaran_baru = ($request->input('tahuan_ajar_id'));
+        $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
         $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
 
         $nilai_tugas->siswa_id = ($request->input('siswa_id'));
@@ -90,9 +90,9 @@ class NilaiTugasController extends BaseController
         $nilai_tugas->pts = ($request->input('pts'));
         $nilai_tugas->pas = ($request->input('psa'));
         if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
-            $nilai_tugas->tahuan_ajar_id = ($tahun_ajaran_baru);
+            $nilai_tugas->tahun_ajar_id = ($tahun_ajaran_baru);
         }else{
-            $nilai_tugas->tahuan_ajar_id = ($tahun_ajaran_lama);
+            $nilai_tugas->tahun_ajar_id = ($tahun_ajaran_lama);
         }
         
         $nilai_tugas->save();
