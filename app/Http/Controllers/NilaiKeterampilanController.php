@@ -75,10 +75,7 @@ class NilaiKeterampilanController extends BaseController
     public function update(Request $request, $siswa_id)
     {
         // $nilai_keterampilan = NilaiKeterampilan::find($id)->update($request->all()); 
-        $nilai_keterampilan = DB::table('nilai_keterampilan')
-                    ->select('*')
-                    ->where('siswa_id', $siswa_id)
-                    ->get();
+        $nilai_keterampilan =  NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
         $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
         $tahun_ajaran_lama = $nilai_keterampilan->tahun_ajar_id;
 

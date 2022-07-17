@@ -75,10 +75,7 @@ class NilaiPengetahuanController extends BaseController
     public function update(Request $request, $siswa_id)
     {
         // $nilai_pengetahuan = NilaiPengetahuan::find($id)->update($request->all());
-        $nilai_pengetahuan = DB::table('nilai_pengetahuan')
-                    ->select('*')
-                    ->where('siswa_id', $siswa_id)
-                    ->get();
+        $nilai_pengetahuan =  NilaiPengetahuan::where('siswa_id', $siswa_id)->first();
         $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
         $tahun_ajaran_lama = $nilai_pengetahuan->tahun_ajar_id;
 

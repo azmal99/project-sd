@@ -75,10 +75,7 @@ class NilaiTugasController extends BaseController
     public function update(Request $request, $siswa_id)
     {
         // $nilai_keternilai_tugasampilan = NilaiTugas::find($siswa_id)->update($request->all());
-        $nilai_tugas = DB::table('nilai_tugas')
-                    ->select('*')
-                    ->where('siswa_id', $siswa_id)
-                    ->get();
+        $nilai_tugas =  NilaiTugas::where('siswa_id', $siswa_id)->first();
         $tahun_ajaran_baru = ($request->input('tahun_ajar_id'));
         $tahun_ajaran_lama = $nilai_tugas->tahun_ajar_id;
 
