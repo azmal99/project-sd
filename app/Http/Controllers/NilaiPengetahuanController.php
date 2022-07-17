@@ -80,23 +80,23 @@ class NilaiPengetahuanController extends BaseController
         $tahun_ajaran_baru = ($request->input('tahuan_ajar_id'));
         $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
 
-        // $nilai_pengetahuan->siswa_id = $siswa_id;
-        // $nilai_pengetahuan->kd_nilai_pengetahuan = ($request->input('kd_nilai_pengetahuan'));
-        // $nilai_pengetahuan->ph1 = ($request->input('ph1'));
-        // $nilai_pengetahuan->ph2 = ($request->input('ph2'));
-        // $nilai_pengetahuan->ph3 = ($request->input('ph3'));
-        // $nilai_pengetahuan->ph4 = ($request->input('ph4'));
-        // $nilai_pengetahuan->ph5 = ($request->input('ph5'));
-        // $nilai_pengetahuan->ph6 = ($request->input('ph6'));
-        // $nilai_pengetahuan->pts = ($request->input('pts'));
-        // $nilai_pengetahuan->pas = ($request->input('psa'));
-        // if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
-        //     $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_baru);
-        // }else{
-        //     $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_lama);
-        // }
+        $nilai_pengetahuan->siswa_id = ($request->input('siswa_id'));
+        $nilai_pengetahuan->kd_nilai_pengetahuan = ($request->input('kd_nilai_pengetahuan'));
+        $nilai_pengetahuan->ph1 = ($request->input('ph1'));
+        $nilai_pengetahuan->ph2 = ($request->input('ph2'));
+        $nilai_pengetahuan->ph3 = ($request->input('ph3'));
+        $nilai_pengetahuan->ph4 = ($request->input('ph4'));
+        $nilai_pengetahuan->ph5 = ($request->input('ph5'));
+        $nilai_pengetahuan->ph6 = ($request->input('ph6'));
+        $nilai_pengetahuan->pts = ($request->input('pts'));
+        $nilai_pengetahuan->pas = ($request->input('psa'));
+        if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
+            $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_baru);
+        }else{
+            $nilai_pengetahuan->tahuan_ajar_id = ($tahun_ajaran_lama);
+        }
         
-        // $nilai_pengetahuan->save();
+        $nilai_pengetahuan->save();
         
         return response()->json([
                 'success' => true,

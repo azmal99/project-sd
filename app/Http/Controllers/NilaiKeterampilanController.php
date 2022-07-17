@@ -80,7 +80,7 @@ class NilaiKeterampilanController extends BaseController
         $tahun_ajaran_baru = ($request->input('tahuan_ajar_id'));
         $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
 
-        $nilai_keterampilan->siswa_id = $siswa_id;
+        $nilai_keterampilan->siswa_id = ($request->input('siswa_id'));
         $nilai_keterampilan->kd_nilai_pengetahuan = ($request->input('kd_nilai_keterampilan'));
         $nilai_keterampilan->ph1 = ($request->input('ph1'));
         $nilai_keterampilan->ph2 = ($request->input('ph2'));
