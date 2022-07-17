@@ -77,8 +77,8 @@ class NilaiPengetahuanController extends BaseController
         // $nilai_pengetahuan = NilaiPengetahuan::find($id)->update($request->all());
         
         $nilai_pengetahuan = NilaiKeterampilan::where('siswa_id', $siswa_id)->first();
-        $nilai_pengetahuan = ($request->input('tahuan_ajar_id'));
-        $nilai_pengetahuan = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
+        $tahun_ajaran_baru = ($request->input('tahuan_ajar_id'));
+        $tahun_ajaran_lama = DB::table('nilai_tugas')->select('tahun_ajar_id')->get();
 
         $nilai_pengetahuan->siswa_id = ($request->input('siswa_id'));
         $nilai_pengetahuan->kd_nilai_pengetahuan = ($request->input('kd_nilai_pengetahuan'));
