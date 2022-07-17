@@ -90,9 +90,9 @@ class NilaiTugasController extends BaseController
         $nilai_tugas->pts = ($request->input('pts'));
         $nilai_tugas->pas = ($request->input('pas'));
         if ($tahun_ajaran_baru <> $tahun_ajaran_lama){
-            $nilai_tugas->tahun_ajar_id = ($tahun_ajaran_baru);
+            $nilai_tugas->tahun_ajar_id = $tahun_ajaran_baru;
         }else{
-            $nilai_tugas->tahun_ajar_id = ($tahun_ajaran_lama);
+            $nilai_tugas->tahun_ajar_id = $tahun_ajaran_lama;
         }
         
         $nilai_tugas->save();
