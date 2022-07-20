@@ -23,9 +23,9 @@ class Pembelajaran extends Authenticatable
         'kelas_id',
         'siswa_id',
         'mata_pelajaran_id',
-        'kd_nilai_pengetahuan',
-        'kd_nilai_keterampilan',
-        'kd_nilai_tugas',
+        'nilai_pengetahuan_id',
+        'nilai_keterampilan_id',
+        'nilai_tugas_id',
         'jumlah_nilai',
         'tahun_ajar_id',
         'cttn_walikelas'

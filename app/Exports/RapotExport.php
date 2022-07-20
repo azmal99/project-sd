@@ -33,7 +33,7 @@ class RapotExport implements FromCollection, WithHeadings
                             nilai_pengetahuan.ph2,
                             nilai_keterampilan.ph1, 
                             nilai_keterampilan.ph2,
-                            nilai_tugas.ph1 , 
+                            nilai_tugas.ph1, 
                             nilai_tugas.ph2,
                             nilai_pengetahuan.pts, 
                             nilai_keterampilan.pts, 
