@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Maatwebsite\Excel\Facades\Excel;
-// use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RapotController extends BaseController
 {
@@ -59,7 +59,7 @@ class RapotController extends BaseController
 
     public function exportRapot()
     {
-        return Excel::download(new RapotExport, 'leger.xlsx');    
+        return Excel::download(new RapotExport, 'Leger_kelas.xlsx');    
     }
 
     public function exportPdfRapot()

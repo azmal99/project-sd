@@ -21,7 +21,7 @@ class NilaiPengetahuan extends Authenticatable
     protected $fillable = [
         'id',
         'siswa_id',
-        'kd_nilai_pengetahuan',
+        'mapel_id',
         'ph1',
         'ph2',
         'ph3',

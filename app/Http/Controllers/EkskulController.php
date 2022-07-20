@@ -110,6 +110,7 @@ class EkskulController extends BaseController
         $ekskul = new Ekskul();
         $ekskul->kd_ekskul = ($request->input('kd_ekskul'));
         $ekskul->nama_ekskul = ($request->input('nama_ekskul'));
+        $ekskul->guru_id = ($request->input('guru_id'));
         $ekskul->enable_flag = ($request->input('enable_flag'));
         
         $ekskul->save();
