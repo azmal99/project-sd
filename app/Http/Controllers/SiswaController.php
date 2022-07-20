@@ -239,45 +239,6 @@ class SiswaController extends BaseController
             $kepribadian->kerapihan = 0;
             $kepribadian->cttn_walikelas = null;
 
-            $nilai_keterampilan = new NilaiKeterampilan();
-            $nilai_keterampilan->siswa_id = $randomIdSiswa;
-            $nilai_keterampilan->kd_nilai_keterampilan = null;
-            $nilai_keterampilan->ph1 = 0;
-            $nilai_keterampilan->ph2 = 0;
-            $nilai_keterampilan->ph3 = 0;
-            $nilai_keterampilan->ph4 = 0;
-            $nilai_keterampilan->ph5 = 0;
-            $nilai_keterampilan->ph6 = 0;
-            $nilai_keterampilan->pts = 0;
-            $nilai_keterampilan->pas = 0;
-            $nilai_keterampilan->tahun_ajar_id = $tahun_ajar_baru;
-
-            $nilai_pengetahuan = new NilaiPengetahuan();
-            $nilai_pengetahuan->siswa_id = $randomIdSiswa;
-            $nilai_pengetahuan->kd_nilai_pengetahuan = null;
-            $nilai_pengetahuan->ph1 = 0;
-            $nilai_pengetahuan->ph2 = 0;
-            $nilai_pengetahuan->ph3 = 0;
-            $nilai_pengetahuan->ph4 = 0;
-            $nilai_pengetahuan->ph5 = 0;
-            $nilai_pengetahuan->ph6 = 0;
-            $nilai_pengetahuan->pts = 0;
-            $nilai_pengetahuan->pas = 0;
-            $nilai_pengetahuan->tahun_ajar_id = $tahun_ajar_baru;
-
-            $nilai_tugas = new NilaiTugas();
-            $nilai_tugas->siswa_id = $randomIdSiswa;
-            $nilai_tugas->kd_nilai_tugas = null;
-            $nilai_tugas->ph1 = 0;
-            $nilai_tugas->ph2 = 0;
-            $nilai_tugas->ph3 = 0;
-            $nilai_tugas->ph4 = 0;
-            $nilai_tugas->ph5 = 0;
-            $nilai_tugas->ph6 = 0;
-            $nilai_tugas->pts = 0;
-            $nilai_tugas->pas = 0;
-            $nilai_tugas->tahun_ajar_id = $tahun_ajar_baru;
-
             $rapot = new Rapot();
             $rapot->siswa_id = $randomIdSiswa;
             $rapot->kriteria_kelulusan = null;
@@ -319,14 +280,53 @@ class SiswaController extends BaseController
                 $pembelajaran->jumlah_nilai = 0;
                 $pembelajaran->tahun_ajar_id = $tahun_ajar_baru;
 
+                $nilai_keterampilan = new NilaiKeterampilan();
+                $nilai_keterampilan->siswa_id = $randomIdSiswa;
+                $nilai_keterampilan->mapel_id = $mapel;
+                $nilai_keterampilan->ph1 = 0;
+                $nilai_keterampilan->ph2 = 0;
+                $nilai_keterampilan->ph3 = 0;
+                $nilai_keterampilan->ph4 = 0;
+                $nilai_keterampilan->ph5 = 0;
+                $nilai_keterampilan->ph6 = 0;
+                $nilai_keterampilan->pts = 0;
+                $nilai_keterampilan->pas = 0;
+                $nilai_keterampilan->tahun_ajar_id = ($request->input('tahun_ajar_id'));
+
+                $nilai_pengetahuan = new NilaiPengetahuan();
+                $nilai_pengetahuan->siswa_id = $randomIdSiswa;
+                $nilai_pengetahuan->mapel_id = $mapel;
+                $nilai_pengetahuan->ph1 = 0;
+                $nilai_pengetahuan->ph2 = 0;
+                $nilai_pengetahuan->ph3 = 0;
+                $nilai_pengetahuan->ph4 = 0;
+                $nilai_pengetahuan->ph5 = 0;
+                $nilai_pengetahuan->ph6 = 0;
+                $nilai_pengetahuan->pts = 0;
+                $nilai_pengetahuan->pas = 0;
+                $nilai_pengetahuan->tahun_ajar_id = ($request->input('tahun_ajar_id'));
+
+                $nilai_tugas = new NilaiTugas();
+                $nilai_tugas->siswa_id = $randomIdSiswa;
+                $nilai_tugas->mapel_id = $mapel;
+                $nilai_tugas->ph1 = 0;
+                $nilai_tugas->ph2 = 0;
+                $nilai_tugas->ph3 = 0;
+                $nilai_tugas->ph4 = 0;
+                $nilai_tugas->ph5 = 0;
+                $nilai_tugas->ph6 = 0;
+                $nilai_tugas->pts = 0;
+                $nilai_tugas->pas = 0;
+                $nilai_tugas->tahun_ajar_id = ($request->input('tahun_ajar_id'));
+
                 $pembelajaran->save();
+                $nilai_keterampilan->save();
+                $nilai_pengetahuan->save();
+                $nilai_tugas->save();
             }
             
             $absensi->save();
             $kepribadian->save();
-            $nilai_keterampilan->save();
-            $nilai_pengetahuan->save();
-            $nilai_tugas->save();
             $rapot->save();
         }
         
